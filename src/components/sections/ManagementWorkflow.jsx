@@ -1,0 +1,164 @@
+import React from "react";
+import { motion } from "framer-motion";
+import { UserPlus, FileText, Layout } from "lucide-react";
+
+const ManagementWorkflow = () => {
+    const steps = [
+        {
+            id: 1,
+            title: "Add Society Details",
+            description: "Quickly set up your society profile with address, rules, and basic configurations.",
+            icon: UserPlus,
+        },
+        {
+            id: 2,
+            title: "Onboard Members",
+            description: "Import resident data and invite members to join the platform for instant communication.",
+            icon: FileText,
+        },
+        {
+            id: 3,
+            title: "Start Managing",
+            description: "Launch automated billing, visitor logs, and communication channels in one click.",
+            icon: Layout,
+        },
+    ];
+
+    return (
+        <section style={{ padding: "100px 24px", background: "#ffffff", textAlign: "center" }}>
+            <div className="container" style={{ maxWidth: "1100px", margin: "0 auto" }}>
+                {/* Heading Area */}
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6 }}
+                    style={{ marginBottom: "80px" }}
+                >
+                    <h2 style={{
+                        fontFamily: "'Bebas Neue', sans-serif",
+                        fontSize: "clamp(2.5rem, 5vw, 4rem)",
+                        color: "#000000",
+                        lineHeight: 1.1,
+                        marginBottom: "16px",
+                        letterSpacing: "1px"
+                    }}>
+                        Streamlined Workflow <br />
+                        <span style={{ color: "#ffffff", WebkitTextStroke: "1px #000000" }}>
+                            From Setup to Management
+                        </span>
+                    </h2>
+                    <p style={{
+                        fontFamily: "'DM Sans', sans-serif",
+                        fontSize: "1.1rem",
+                        color: "#666666",
+                        maxWidth: "600px",
+                        margin: "0 auto"
+                    }}>
+                        A simple, intuitive process designed for society management teams.
+                    </p>
+                </motion.div>
+
+                {/* Workflow Line & Items */}
+                <div style={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    position: "relative",
+                    flexWrap: "wrap",
+                    gap: "40px"
+                }}>
+                    {/* Connecting Line (Desktop) */}
+                    <div style={{
+                        position: "absolute",
+                        top: "40px",
+                        left: "10%",
+                        right: "10%",
+                        height: "1px",
+                        background: "linear-gradient(90deg, #eeeeee 0%, #000000 50%, #eeeeee 100%)",
+                        zIndex: 0,
+                        display: window.innerWidth > 768 ? "block" : "none"
+                    }} />
+
+                    {steps.map((step, index) => {
+                        const Icon = step.icon;
+                        return (
+                            <motion.div
+                                key={step.id}
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.5, delay: index * 0.2 }}
+                                style={{
+                                    flex: "1 1 250px",
+                                    position: "relative",
+                                    zIndex: 1,
+                                    display: "flex",
+                                    flexDirection: "column",
+                                    alignItems: "center"
+                                }}
+                            >
+                                {/* Icon Circle */}
+                                <div style={{
+                                    width: "80px",
+                                    height: "80px",
+                                    borderRadius: "50%",
+                                    background: index === 1 ? "#000000" : "#ffffff",
+                                    border: "1px solid #eeeeee",
+                                    display: "flex",
+                                    alignItems: "center",
+                                    justifyContent: "center",
+                                    marginBottom: "24px",
+                                    boxShadow: index === 1 ? "0 10px 30px rgba(0,0,0,0.15)" : "0 4px 12px rgba(0,0,0,0.05)",
+                                    position: "relative"
+                                }}>
+                                    <Icon size={28} color={index === 1 ? "#ffffff" : "#000000"} strokeWidth={1.5} />
+                                    {/* Number Badge */}
+                                    <div style={{
+                                        position: "absolute",
+                                        top: "0",
+                                        right: "-5px",
+                                        width: "24px",
+                                        height: "24px",
+                                        background: "#000000",
+                                        color: "#ffffff",
+                                        borderRadius: "50%",
+                                        fontSize: "12px",
+                                        fontWeight: 800,
+                                        display: "flex",
+                                        alignItems: "center",
+                                        justifyContent: "center",
+                                        border: "2px solid #ffffff"
+                                    }}>
+                                        {step.id}
+                                    </div>
+                                </div>
+
+                                {/* Content */}
+                                <h3 style={{
+                                    fontFamily: "'DM Sans', sans-serif",
+                                    fontSize: "1.25rem",
+                                    fontWeight: 700,
+                                    color: "#000000",
+                                    marginBottom: "12px"
+                                }}>
+                                    {step.title}
+                                </h3>
+                                <p style={{
+                                    fontFamily: "'DM Sans', sans-serif",
+                                    fontSize: "0.95rem",
+                                    color: "#666666",
+                                    lineHeight: 1.6,
+                                    maxWidth: "280px"
+                                }}>
+                                    {step.description}
+                                </p>
+                            </motion.div>
+                        );
+                    })}
+                </div>
+            </div>
+        </section>
+    );
+};
+
+export default ManagementWorkflow;
