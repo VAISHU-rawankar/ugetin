@@ -68,15 +68,14 @@ const ManagementWorkflow = () => {
                     gap: "40px"
                 }}>
                     {/* Connecting Line (Desktop) */}
-                    <div style={{
+                    <div className="workflow-line" style={{
                         position: "absolute",
                         top: "40px",
                         left: "10%",
                         right: "10%",
                         height: "1px",
                         background: "linear-gradient(90deg, #eeeeee 0%, #000000 50%, #eeeeee 100%)",
-                        zIndex: 0,
-                        display: window.innerWidth > 768 ? "block" : "none"
+                        zIndex: 0
                     }} />
 
                     {steps.map((step, index) => {

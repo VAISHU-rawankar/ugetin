@@ -14,7 +14,7 @@ const Security = ({ data = {} }) => {
     } = data;
 
     return (
-        <div style={{ fontFamily: "'DM Sans', 'Helvetica Neue', sans-serif", marginTop: "70px" }}>
+        <div style={{ fontFamily: "'DM Sans', 'Helvetica Neue', sans-serif", marginTop: "40px" }}>
             <SecurityHero data={hero} />
 
             <SecurityFeatures data={features} />

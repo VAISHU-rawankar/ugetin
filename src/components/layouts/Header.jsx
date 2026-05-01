@@ -18,6 +18,13 @@ const resourcesDropdownItems = [
 const NavDropdown = ({ label, items, isOpen, onToggle, currentPath }) => {
     const ref = useRef(null);
     const activeHrefs = items.map((i) => i.href);
+    const [isMobile, setIsMobile] = useState(window.innerWidth <= 968);
+
+    useEffect(() => {
+        const check = () => setIsMobile(window.innerWidth <= 968);
+        window.addEventListener("resize", check);
+        return () => window.removeEventListener("resize", check);
+    }, []);
 
     useEffect(() => {
         const handler = (e) => {
@@ -54,7 +61,15 @@ const NavDropdown = ({ label, items, isOpen, onToggle, currentPath }) => {
 
             {isOpen && (
                 <div
-                    style={{
+                    style={isMobile ? {
+                        padding: "10px 0 10px 20px",
+                        display: "flex",
+                        flexDirection: "column",
+                        gap: "8px",
+                        width: "100%",
+                        borderLeft: "2px solid #eee",
+                        marginTop: "10px"
+                    } : {
                         position: "absolute",
                         top: "calc(100% + 12px)",
                         left: "50%",
@@ -100,8 +115,16 @@ const NavDropdown = ({ label, items, isOpen, onToggle, currentPath }) => {
 };
 
 export default function Header() {
+    const [isMobile, setIsMobile] = useState(window.innerWidth <= 968);
     const [menuOpen, setMenuOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
+
+    useEffect(() => {
+        const check = () => setIsMobile(window.innerWidth <= 968);
+        window.addEventListener("resize", check);
+        return () => window.removeEventListener("resize", check);
+    }, []);
+
     const [featuresOpen, setFeaturesOpen] = useState(false);
     const [resourcesOpen, setResourcesOpen] = useState(false);
     const location = useLocation();
@@ -220,7 +243,7 @@ export default function Header() {
                         <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
                             <Link 
                                 to="/contact" 
-                                className="nav-btn"
+                                className="nav-btn header-cta-btn"
                                 style={{
                                     padding: "10px 24px",
                                     background: "#000000",

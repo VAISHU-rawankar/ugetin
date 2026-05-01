@@ -10,6 +10,17 @@ function validatePhone(phone) {
     return /^[\d\s+\-()]+$/.test(phone) && phone.replace(/\D/g, "").length >= 10;
 }
 
+const useIsMobile = () => {
+    const [isMobile, setIsMobile] = useState(false);
+    useEffect(() => {
+        const check = () => setIsMobile(window.innerWidth <= 768);
+        check();
+        window.addEventListener("resize", check);
+        return () => window.removeEventListener("resize", check);
+    }, []);
+    return isMobile;
+};
+
 // ── Notification ─────────────────────────────────────────────
 function Notification({ message, type }) {
     if (!message) return null;
@@ -55,6 +66,7 @@ function SuccessMessage() {
 
 // ── Main Page ─────────────────────────────────────────────────
 export default function Contact() {
+    const isMobile = useIsMobile();
     useEffect(() => window.scrollTo(0, 0), []);
 
     // Form state
@@ -179,14 +191,14 @@ export default function Contact() {
     const inputStyle = (fieldName) => ({
         width: "100%",
         padding: "0.75rem 1rem",
-        background: "rgba(42,53,72,0.5)",
-        border: `1px solid ${errors[fieldName] ? "#ff4466" : "#2a3548"}`,
+        background: "#111",
+        border: `1px solid ${errors[fieldName] ? "#ff4466" : "#333"}`,
         borderRadius: "8px",
         color: "#fff",
         fontSize: "0.95rem",
         outline: "none",
         fontFamily: "inherit",
-        transition: "border-color 0.2s ease",
+        transition: "all 0.2s ease",
     });
 
     return (
@@ -220,7 +232,7 @@ export default function Contact() {
                         {/* Middle Section — 3 Points Side by Side */}
                         <div className="contact-methods-grid" style={{ 
                             display: "grid", 
-                            gridTemplateColumns: "repeat(3, 1fr)", 
+                            gridTemplateColumns: isMobile ? "1fr" : "repeat(3, 1fr)", 
                             gap: "30px", 
                             marginBottom: "60px",
                             width: "100%" 
@@ -257,10 +269,18 @@ export default function Contact() {
                         </div>
 
                         {/* Bottom Section — Form */}
-                        <div className="contact-form-container" style={{ maxWidth: "900px", margin: "0 auto", width: "100%" }}>
-                            <form className="contact-form" id="contactForm" onSubmit={handleSubmit} noValidate>
-                                <h3>{d.form.title}</h3>
-                                <p className="form-subtitle">{d.form.subtitle}</p>
+                        <div className="contact-form-container" style={{ 
+                            maxWidth: "900px", 
+                            margin: "0 auto", 
+                            width: "100%",
+                            background: "#000",
+                            padding: "40px",
+                            borderRadius: "24px",
+                            color: "#fff"
+                        }}>
+                            <form className="contact-form" id="contactForm" onSubmit={handleSubmit} noValidate style={{ color: "#fff" }}>
+                                <h3 style={{ color: "#fff" }}>{d.form.title}</h3>
+                                <p className="form-subtitle" style={{ color: "#aaa" }}>{d.form.subtitle}</p>
 
                                 {/* I am a */}
                                 <div className="form-group">
@@ -394,9 +414,17 @@ export default function Contact() {
                                 {/* Submit */}
                                 <button
                                     type="submit"
-                                    className="btn btn-primary btn-large"
+                                    className="btn"
                                     disabled={submitting}
-                                    style={{ width: "100%", justifyContent: "center" }}
+                                    style={{ 
+                                        width: "100%", 
+                                        justifyContent: "center",
+                                        background: "#fff",
+                                        color: "#000",
+                                        padding: "16px",
+                                        borderRadius: "12px",
+                                        fontWeight: "700"
+                                    }}
                                 >
                                     <span>{submitting ? "Sending..." : "Send Message"}</span>
                                     <i className="fas fa-paper-plane"></i>

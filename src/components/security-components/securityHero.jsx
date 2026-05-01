@@ -1,127 +1,3 @@
-// // SecurityHero.jsx
-// import { motion } from "framer-motion";
-
-// const SecurityHero = ({ data = {} }) => {
-//     const {
-//         bannerImage = "",
-//         title = "",
-//         description = "",
-//         buttons = [],
-//     } = data;
-
-//     return (
-//         <section
-//             style={{
-//                 position: "relative",
-//                 width: "100%",
-//                 minHeight: "420px",
-//             }}
-//         >
-//             {/* Full-width background banner */}
-//             {bannerImage && (
-//                 <div
-//                     style={{
-//                         position: "absolute",
-//                         inset: 0,
-//                         backgroundImage: `url("${bannerImage}")`,
-//                         backgroundSize: "cover",
-//                         backgroundPosition: "top left 30%",
-//                         backgroundRepeat: "no-repeat",
-//                         zIndex: 0,
-//                     }}
-//                 />
-//             )}
-
-//             {/* Overlay */}
-//             <div
-//                 style={{
-//                     position: "absolute",
-//                     inset: 0,
-//                     zIndex: 1,
-//                 }}
-//             />
-
-//             {/* Content — left aligned, max half width */}
-//             <motion.div
-//                 initial={{ opacity: 0, y: 20 }}
-//                 animate={{ opacity: 1, y: 0 }}
-//                 transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-//                 style={{
-//                     position: "relative",
-//                     zIndex: 2,
-//                     maxWidth: "500px",
-//                     padding: "56px 90px 56px",
-//                 }}
-//             >
-//                 {/* Title */}
-//                 <h1
-//                     style={{
-//                         fontSize: "clamp(1.8rem, 3vw, 2.4rem)",
-//                         fontWeight: 800,
-//                         color: "#111",
-//                         letterSpacing: "-0.03em",
-//                         marginBottom: "16px",
-//                         lineHeight: 1.15,
-//                     }}
-//                 >
-//                     {title}
-//                 </h1>
-
-//                 {/* Description */}
-//                 <p
-//                     style={{
-//                         fontSize: "1rem",
-//                         color: "#555",
-//                         lineHeight: 1.65,
-//                         marginBottom: "28px",
-//                         maxWidth: "400px",
-//                     }}
-//                 >
-//                     {description}
-//                 </p>
-
-//                 {/* Buttons */}
-//                 <div style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}>
-//                     {buttons.map((btn, i) => (
-//                         <a
-//                             key={i}
-//                             href={btn.href}
-//                             style={{
-//                                 padding: "10px 22px",
-//                                 borderRadius: "8px",
-//                                 fontSize: "0.975rem",
-//                                 fontWeight: 600,
-//                                 textDecoration: "none",
-//                                 cursor: "pointer",
-//                                 border: "1.5px solid #111",
-//                                 background: btn.variant === "filled" ? "#111" : "transparent",
-//                                 color: btn.variant === "filled" ? "#fff" : "#111",
-//                                 transition: "all 0.2s ease",
-//                             }}
-//                             onMouseEnter={(e) => {
-//                                 e.currentTarget.style.background = "#111";
-//                                 e.currentTarget.style.color = "#fff";
-//                             }}
-//                             onMouseLeave={(e) => {
-//                                 e.currentTarget.style.background =
-//                                     btn.variant === "filled" ? "#111" : "transparent";
-//                                 e.currentTarget.style.color =
-//                                     btn.variant === "filled" ? "#fff" : "#111";
-//                             }}
-//                         >
-//                             {btn.label}
-//                         </a>
-//                     ))}
-//                 </div>
-//             </motion.div>
-//         </section>
-//     );
-// };
-
-// export default SecurityHero;
-
-
-// SecurityHero.jsx
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
@@ -141,11 +17,13 @@ const SecurityHero = ({ data = {} }) => {
     const isMobile = useIsMobile();
 
     const {
-        bannerImage = "",
-        title = "",
-        description = "",
-        highlights = [],
-        buttons = [],
+        title = "For Security",
+        description = "Empower your security guards with our intuitive guard management app. Manage visitor entries, deliveries, and incidents seamlessly from their mobile device.",
+        highlights = ["Real-time Entry Logging", "Instant SOS Protocol", "Digital Guard Patrol", "Zero Manual Errors"],
+        buttons = [
+            { label: "Get Demo", href: "/contact", variant: "outline" },
+            { label: "Learn More", href: "#", variant: "filled" }
+        ],
     } = data;
 
     return (
@@ -153,179 +31,207 @@ const SecurityHero = ({ data = {} }) => {
             style={{
                 position: "relative",
                 width: "100%",
-                minHeight: "600px",
-                height: "75vh",
+                height: isMobile ? "auto" : "100vh",
+                minHeight: isMobile ? "auto" : "750px",
                 overflow: "hidden",
-                background: "#f8f9fa"
+                background: "#ffffff",
+                display: "flex",
+                alignItems: "center"
             }}
         >
-            {/* Clear Image Background */}
-            {bannerImage && (
-                <img
-                    src={bannerImage}
-                    alt=""
-                    style={{
-                        position: "absolute",
-                        inset: 0,
-                        width: "100%",
-                        height: "100%",
-                        objectFit: "cover",
-                        objectPosition: isMobile ? "70% center" : "top right",
-                        zIndex: 0,
-                        filter: "none"
-                    }}
-                />
+            {/* Background Decorative Text */}
+            {!isMobile && (
+                <div style={{
+                    position: "absolute",
+                    top: "50%",
+                    left: "5%",
+                    transform: "translateY(-50%)",
+                    fontSize: "15vw",
+                    fontWeight: 900,
+                    color: "rgba(0,0,0,0.03)",
+                    lineHeight: 1,
+                    zIndex: 0,
+                    pointerEvents: "none",
+                    whiteSpace: "nowrap",
+                    fontFamily: "inherit"
+                }}>
+                    AURORA
+                </div>
             )}
 
-            {/* Gradient Overlay for Text Readability - Editorial Style */}
-            <div
-                style={{
-                    position: "absolute",
-                    inset: 0,
-                    background: isMobile 
-                        ? "linear-gradient(to bottom, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.85) 40%, rgba(255,255,255,0.2) 100%)"
-                        : "linear-gradient(to right, #ffffff 0%, rgba(255,255,255,0.98) 25%, rgba(255,255,255,0.7) 45%, rgba(255,255,255,0) 100%)",
-                    zIndex: 1,
-                }}
-            />
-
-            {/* Content */}
-            <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-                style={
-                    isMobile
-                        ? {
-                              position: "relative",
-                              zIndex: 2,
-                              maxWidth: "100%",
-                              padding: "60px 24px",
-                              display: "flex",
-                              flexDirection: "column",
-                              justifyContent: "center",
-                              height: "100%"
-                          }
-                        : {
-                              position: "relative",
-                              zIndex: 2,
-                              maxWidth: "900px",
-                              padding: "80px 100px",
-                              height: "100%",
-                              display: "flex",
-                              flexDirection: "column",
-                              justifyContent: "center"
-                          }
-                }
-            >
-                {/* Badge */}
-                <div style={{
-                    display: "inline-block",
-                    padding: "6px 12px",
-                    background: "#000000",
-                    color: "#ffffff",
-                    fontSize: "0.75rem",
-                    fontWeight: 700,
-                    textTransform: "uppercase",
-                    letterSpacing: "2px",
-                    marginBottom: "20px",
-                    borderRadius: "2px"
-                }}>
-                    Security Protocol
-                </div>
-
-                {/* Title */}
-                <h1
-                    style={{
-                        fontFamily: "'Bebas Neue', sans-serif",
-                        fontSize: isMobile ? "3.5rem" : "clamp(4rem, 7vw, 6.5rem)",
-                        fontWeight: 400,
-                        color: "#000000",
-                        letterSpacing: "-0.01em",
-                        marginBottom: "16px",
-                        lineHeight: 0.95,
-                    }}
-                >
-                    {title}
-                </h1>
-
-                {/* Description */}
-                <p
-                    style={{
-                        fontFamily: "'DM Sans', sans-serif",
-                        fontSize: isMobile ? "1rem" : "1.15rem",
-                        color: "#444444",
-                        lineHeight: 1.6,
-                        marginBottom: "32px",
-                        maxWidth: isMobile ? "100%" : "520px",
-                    }}
-                >
-                    {description}
-                </p>
-
-                {/* Highlights */}
-                <div style={{
-                    display: "flex",
-                    flexWrap: "wrap",
-                    gap: "12px 24px",
-                    marginBottom: "40px",
-                    maxWidth: "600px"
-                }}>
-                    {highlights.map((text, i) => (
-                        <div key={i} style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-                            <div style={{ width: "6px", height: "6px", background: "#000", borderRadius: "50%" }} />
-                            <span style={{ 
-                                fontFamily: "'DM Sans', sans-serif", 
-                                fontSize: "0.9rem", 
-                                fontWeight: 600, 
-                                color: "#000" 
-                            }}>{text}</span>
-                        </div>
-                    ))}
-                </div>
-
-                {/* Buttons */}
-                <div style={{
-                    display: "flex",
-                    gap: "16px",
-                    flexWrap: "wrap",
+            <div className="container" style={{ 
+                maxWidth: "1500px", 
+                margin: "0 auto", 
+                zIndex: 1, 
+                position: "relative",
+                padding: isMobile ? "80px 20px" : "0 100px"
+            }}>
+                <div style={{ 
+                    display: "flex", 
                     flexDirection: isMobile ? "column" : "row",
+                    alignItems: "center",
+                    justifyContent: "flex-start",
+                    gap: "60px"
                 }}>
-                    {buttons.map((btn, i) => (
-                        <Link
-                            key={i}
-                            to={btn.href}
+                    
+                    {/* Left: Content */}
+                    <motion.div
+                        initial={{ opacity: 0, x: -30 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                        style={{ flex: isMobile ? "1" : "0 1 800px" }}
+                    >
+                        {/* Badge */}
+                        <div style={{
+                            display: "inline-block",
+                            padding: "8px 20px",
+                            background: "#000000",
+                            color: "#ffffff",
+                            fontSize: "0.75rem",
+                            fontWeight: 700,
+                            textTransform: "uppercase",
+                            letterSpacing: "2px",
+                            marginBottom: "24px",
+                        }}>
+                            Security Protocol
+                        </div>
+
+                        {/* Title */}
+                        <h1
                             style={{
-                                padding: isMobile ? "16px 24px" : "16px 36px",
-                                borderRadius: "4px",
-                                fontSize: "0.95rem",
-                                fontWeight: 700,
-                                textDecoration: "none",
-                                cursor: "pointer",
-                                border: "1px solid #000",
-                                background: btn.variant === "filled" ? "#000" : "transparent",
-                                color: btn.variant === "filled" ? "#fff" : "#000",
-                                transition: "all 0.3s ease",
-                                textAlign: "center",
-                                fontFamily: "'DM Sans', sans-serif",
-                                minWidth: isMobile ? "100%" : "180px"
-                            }}
-                            onMouseEnter={(e) => {
-                                e.currentTarget.style.background = btn.variant === "filled" ? "transparent" : "#000";
-                                e.currentTarget.style.color = btn.variant === "filled" ? "#000" : "#fff";
-                            }}
-                            onMouseLeave={(e) => {
-                                e.currentTarget.style.background =
-                                    btn.variant === "filled" ? "#000" : "transparent";
-                                e.currentTarget.style.color =
-                                    btn.variant === "filled" ? "#fff" : "#000";
+                                fontFamily: "'Bebas Neue', sans-serif",
+                                fontSize: isMobile ? "3.5rem" : "clamp(4.5rem, 8vw, 6.5rem)",
+                                fontWeight: 400,
+                                color: "#000000",
+                                letterSpacing: "-0.01em",
+                                marginBottom: "20px",
+                                lineHeight: 0.9,
+                                textTransform: "uppercase",
+                                whiteSpace: "nowrap"
                             }}
                         >
-                            {btn.label}
-                        </Link>
-                    ))}
+                            FOR SECURITY
+                        </h1>
+
+                        {/* Description */}
+                        <p
+                            style={{
+                                fontFamily: "'DM Sans', sans-serif",
+                                fontSize: isMobile ? "1.05rem" : "1.2rem",
+                                color: "#444444",
+                                lineHeight: 1.6,
+                                marginBottom: "40px",
+                                maxWidth: "520px",
+                            }}
+                        >
+                            {description}
+                        </p>
+
+                        {/* Highlights */}
+                        <div style={{
+                            display: "grid",
+                            gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr",
+                            gap: "16px 32px",
+                            marginBottom: "48px",
+                        }}>
+                            {highlights.map((text, i) => (
+                                <div key={i} style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+                                    <div style={{ width: "6px", height: "6px", background: "#000", borderRadius: "50%" }} />
+                                    <span style={{ 
+                                        fontFamily: "'DM Sans', sans-serif", 
+                                        fontSize: "0.95rem", 
+                                        fontWeight: 700, 
+                                        color: "#000" 
+                                    }}>{text}</span>
+                                </div>
+                            ))}
+                        </div>
+
+                        {/* Buttons */}
+                        <div style={{
+                            display: "flex",
+                            gap: "16px",
+                            flexWrap: "wrap",
+                        }}>
+                            {buttons.map((btn, i) => (
+                                <Link
+                                    key={i}
+                                    to={btn.href}
+                                    style={{
+                                        padding: "16px 48px",
+                                        borderRadius: "4px",
+                                        fontSize: "0.95rem",
+                                        fontWeight: 700,
+                                        textDecoration: "none",
+                                        cursor: "pointer",
+                                        border: "1.5px solid #000",
+                                        background: btn.variant === "filled" ? "#000" : "transparent",
+                                        color: btn.variant === "filled" ? "#fff" : "#000",
+                                        transition: "all 0.3s ease",
+                                        textAlign: "center",
+                                        fontFamily: "'DM Sans', sans-serif",
+                                        minWidth: isMobile ? "100%" : "180px"
+                                    }}
+                                    onMouseEnter={(e) => {
+                                        e.currentTarget.style.background = btn.variant === "filled" ? "transparent" : "#000";
+                                        e.currentTarget.style.color = btn.variant === "filled" ? "#000" : "#fff";
+                                    }}
+                                    onMouseLeave={(e) => {
+                                        e.currentTarget.style.background =
+                                            btn.variant === "filled" ? "#000" : "transparent";
+                                        e.currentTarget.style.color =
+                                            btn.variant === "filled" ? "#fff" : "#000";
+                                    }}
+                                >
+                                    {btn.label}
+                                </Link>
+                            ))}
+                        </div>
+                    </motion.div>
+
+                    {/* Right: Security Guard Cutout */}
+                    {!isMobile && (
+                        <motion.div
+                            initial={{ opacity: 0, x: 50 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
+                            style={{ 
+                                flex: "1",
+                                display: "flex",
+                                justifyContent: "flex-end",
+                                position: "relative",
+                                height: "100vh",
+                                alignItems: "flex-end",
+                                overflow: "hidden"
+                            }}
+                        >
+                            {/* Ambient Glow */}
+                            <div style={{
+                                position: "absolute",
+                                width: "150%",
+                                height: "100%",
+                                background: "radial-gradient(circle, rgba(0,0,0,0.05) 0%, rgba(255,255,255,0) 70%)",
+                                zIndex: -1,
+                                top: "10%"
+                            }} />
+
+                            <img 
+                                src="/indian_guard_folded.png" 
+                                alt="Professional Indian Security Guard"
+                                style={{
+                                    height: "115%",
+                                    width: "auto",
+                                    maxHeight: "none",
+                                    filter: "drop-shadow(30px 20px 60px rgba(0,0,0,0.1))",
+                                    objectFit: "contain",
+                                    display: "block",
+                                    transform: "translateY(10%)"
+                                }}
+                            />
+                        </motion.div>
+                    )}
                 </div>
-            </motion.div>
+            </div>
         </section>
     );
 };

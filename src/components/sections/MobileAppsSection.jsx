@@ -213,7 +213,7 @@ const RotatingText = () => {
             display: "inline-block", 
             minWidth: "120px", 
             textAlign: "center",
-            fontSize: "1.75em",
+            fontSize: "1.5em",
             fontWeight: 900,
             padding: "0 6px"
         }}>
@@ -253,8 +253,8 @@ const MobileAppsSection = () => {
                 position: "relative",
                 width: "100%",
                 overflow: "hidden",
-                padding: "56px 0 48px",
-                marginTop: "60px", // Added gap between sections
+                padding: "40px 0",
+                marginTop: "20px", 
                 borderBottom: "1px solid #ebebeb"
             }}>
                 {/* Full background image */}
@@ -279,7 +279,7 @@ const MobileAppsSection = () => {
                 />
 
                 <div className="container" style={{ position: "relative", zIndex: 2 }}>
-                    <div style={{ display: "flex", alignItems: "center", justifyContent: "flex-start", gap: "32px", flexWrap: "wrap", minHeight: "400px" }}>
+                    <div style={{ display: "flex", alignItems: "center", justifyContent: "flex-start", gap: "32px", flexWrap: "wrap", minHeight: "350px" }}>
 
                         {/* Text Content - Right Side */}
                         <motion.div
