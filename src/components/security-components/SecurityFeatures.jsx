@@ -1,6 +1,17 @@
-// SecurityFeatures.jsx
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { UserPlus, Package, BellRing, Camera, ClipboardList, ShieldCheck } from "lucide-react";
+
+const useIsMobile = () => {
+    const [isMobile, setIsMobile] = useState(false);
+    useEffect(() => {
+        const check = () => setIsMobile(window.innerWidth <= 768);
+        check();
+        window.addEventListener("resize", check);
+        return () => window.removeEventListener("resize", check);
+    }, []);
+    return isMobile;
+};
 
 const iconMap = {
     "user-plus": UserPlus,
@@ -29,12 +40,13 @@ const itemVariants = {
 };
 
 const SecurityFeatures = ({ data = {} }) => {
+    const isMobile = useIsMobile();
     const { heading = {}, subtitle = "", items = [] } = data;
 
     return (
-        <section style={{ padding: "100px 40px", background: "#ffffff" }}>
+        <section style={{ padding: isMobile ? "60px 20px" : "100px 40px", background: "#ffffff" }}>
             {/* Header Section */}
-            <div style={{ textAlign: "center", marginBottom: "80px", maxWidth: "800px", margin: "0 auto 80px" }}>
+            <div style={{ textAlign: "center", marginBottom: isMobile ? "40px" : "80px", maxWidth: "800px", margin: "0 auto" }}>
                 <motion.h2
                     initial={{ opacity: 0, y: 15 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -42,7 +54,7 @@ const SecurityFeatures = ({ data = {} }) => {
                     transition={{ duration: 0.5 }}
                     style={{
                         fontFamily: "'Bebas Neue', sans-serif",
-                        fontSize: "clamp(3rem, 5vw, 5rem)",
+                        fontSize: isMobile ? "2.5rem" : "clamp(3rem, 5vw, 5rem)",
                         color: "#000000",
                         lineHeight: 1,
                         marginBottom: "24px",
@@ -60,7 +72,7 @@ const SecurityFeatures = ({ data = {} }) => {
                     transition={{ duration: 0.5, delay: 0.2 }}
                     style={{
                         fontFamily: "'DM Sans', sans-serif",
-                        fontSize: "1.15rem",
+                        fontSize: isMobile ? "1rem" : "1.15rem",
                         color: "#666666",
                         lineHeight: 1.6,
                         margin: "0 auto"
@@ -78,8 +90,8 @@ const SecurityFeatures = ({ data = {} }) => {
                     viewport={{ once: true }}
                     style={{
                         display: "grid",
-                        gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", 
-                        gap: "32px 48px",
+                        gridTemplateColumns: isMobile ? "1fr" : "repeat(auto-fit, minmax(320px, 1fr))", 
+                        gap: isMobile ? "20px" : "32px 48px",
                         maxWidth: "1100px",
                         width: "100%",
                     }}

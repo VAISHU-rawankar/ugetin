@@ -314,7 +314,7 @@
     .hero-visual-wrapper {
         height: auto;
         aspect-ratio: 4/3;
-        margin-top: 0;
+        margin-top: -30px;
         width: 100%;
         max-width: 500px;
         position: relative;

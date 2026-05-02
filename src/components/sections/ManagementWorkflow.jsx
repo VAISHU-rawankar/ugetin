@@ -1,8 +1,20 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { UserPlus, FileText, Layout } from "lucide-react";
 
+const useIsMobile = () => {
+    const [isMobile, setIsMobile] = useState(false);
+    useEffect(() => {
+        const check = () => setIsMobile(window.innerWidth <= 768);
+        check();
+        window.addEventListener("resize", check);
+        return () => window.removeEventListener("resize", check);
+    }, []);
+    return isMobile;
+};
+
 const ManagementWorkflow = () => {
+    const isMobile = useIsMobile();
     const steps = [
         {
             id: 1,
@@ -25,7 +37,7 @@ const ManagementWorkflow = () => {
     ];
 
     return (
-        <section style={{ padding: "100px 24px", background: "#ffffff", textAlign: "center" }}>
+        <section style={{ padding: isMobile ? "60px 20px" : "100px 24px", background: "#ffffff", textAlign: "center" }}>
             <div className="container" style={{ maxWidth: "1100px", margin: "0 auto" }}>
                 {/* Heading Area */}
                 <motion.div
@@ -33,7 +45,7 @@ const ManagementWorkflow = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6 }}
-                    style={{ marginBottom: "80px" }}
+                    style={{ marginBottom: isMobile ? "40px" : "80px" }}
                 >
                     <h2 style={{
                         fontFamily: "'Bebas Neue', sans-serif",
@@ -67,16 +79,18 @@ const ManagementWorkflow = () => {
                     flexWrap: "wrap",
                     gap: "40px"
                 }}>
-                    {/* Connecting Line (Desktop) */}
-                    <div className="workflow-line" style={{
-                        position: "absolute",
-                        top: "40px",
-                        left: "10%",
-                        right: "10%",
-                        height: "1px",
-                        background: "linear-gradient(90deg, #eeeeee 0%, #000000 50%, #eeeeee 100%)",
-                        zIndex: 0
-                    }} />
+                    {/* Connecting Line (Desktop Only) */}
+                    {!isMobile && (
+                        <div className="workflow-line" style={{
+                            position: "absolute",
+                            top: "40px",
+                            left: "10%",
+                            right: "10%",
+                            height: "1px",
+                            background: "linear-gradient(90deg, #eeeeee 0%, #000000 50%, #eeeeee 100%)",
+                            zIndex: 0
+                        }} />
+                    )}
 
                     {steps.map((step, index) => {
                         const Icon = step.icon;
@@ -88,7 +102,7 @@ const ManagementWorkflow = () => {
                                 viewport={{ once: true }}
                                 transition={{ duration: 0.5, delay: index * 0.2 }}
                                 style={{
-                                    flex: "1 1 250px",
+                                    flex: isMobile ? "1 1 100%" : "1 1 250px",
                                     position: "relative",
                                     zIndex: 1,
                                     display: "flex",
@@ -98,19 +112,19 @@ const ManagementWorkflow = () => {
                             >
                                 {/* Icon Circle */}
                                 <div style={{
-                                    width: "80px",
-                                    height: "80px",
+                                    width: isMobile ? "70px" : "80px",
+                                    height: isMobile ? "70px" : "80px",
                                     borderRadius: "50%",
                                     background: index === 1 ? "#000000" : "#ffffff",
                                     border: "1px solid #eeeeee",
                                     display: "flex",
                                     alignItems: "center",
                                     justifyContent: "center",
-                                    marginBottom: "24px",
+                                    marginBottom: isMobile ? "16px" : "24px",
                                     boxShadow: index === 1 ? "0 10px 30px rgba(0,0,0,0.15)" : "0 4px 12px rgba(0,0,0,0.05)",
                                     position: "relative"
                                 }}>
-                                    <Icon size={28} color={index === 1 ? "#ffffff" : "#000000"} strokeWidth={1.5} />
+                                    <Icon size={isMobile ? 24 : 28} color={index === 1 ? "#ffffff" : "#000000"} strokeWidth={1.5} />
                                     {/* Number Badge */}
                                     <div style={{
                                         position: "absolute",
@@ -135,7 +149,7 @@ const ManagementWorkflow = () => {
                                 {/* Content */}
                                 <h3 style={{
                                     fontFamily: "'DM Sans', sans-serif",
-                                    fontSize: "1.25rem",
+                                    fontSize: isMobile ? "1.15rem" : "1.25rem",
                                     fontWeight: 700,
                                     color: "#000000",
                                     marginBottom: "12px"

@@ -27,25 +27,10 @@ const ResidentHero = ({ data = {} }) => {
             style={{
                 position: "relative",
                 width: "100%",
-                minHeight: "400px",
-                height: "75vh",
+                minHeight: isMobile ? "auto" : "400px",
+                height: isMobile ? "auto" : "75vh",
             }}
         >
-            {/* Full-width background banner image */}
-            {/* {bannerImage && (
-                <div
-                    style={{
-                        position: "absolute",
-                        inset: 0,
-                        backgroundImage: `url("${bannerImage}")`,
-                        backgroundSize: "cover",
-                        backgroundPosition: "top 30% center",
-                        backgroundRepeat: "no-repeat",
-                        zIndex: 0,
-                    }}
-                />
-            )} */}
-
             {bannerImage && (
                 <img
                     src={bannerImage}
@@ -56,24 +41,23 @@ const ResidentHero = ({ data = {} }) => {
                         width: "100%",
                         height: "100%",
                         objectFit: "cover",
-                        // objectPosition: "top center",
                         objectPosition: isMobile ? "70% center" : "top center",
                         zIndex: 0,
                     }}
                 />
             )}
 
-            {/* Overlay for readability */}
             <div
                 style={{
                     position: "absolute",
                     inset: 0,
-                    background: "linear-gradient(to right, #000000 0%, rgba(0,0,0,0.8) 40%, rgba(0,0,0,0.2) 100%)",
+                    background: isMobile 
+                        ? "linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.9) 100%)" 
+                        : "linear-gradient(to right, #000000 0%, rgba(0,0,0,0.8) 40%, rgba(0,0,0,0.2) 100%)",
                     zIndex: 1,
                 }}
             />
 
-            {/* Content */}
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -84,7 +68,9 @@ const ResidentHero = ({ data = {} }) => {
                     zIndex: 2,
                     maxWidth: "620px",
                     height: "100%",
-                    padding: isMobile ? "20px 20px 20px" : "56px 40px 56px",
+                    padding: isMobile ? "80px 20px 60px" : "56px 40px 56px",
+                    textAlign: isMobile ? "center" : "left",
+                    margin: isMobile ? "0 auto" : "0"
                 }}
             >
                 {/* Title */}

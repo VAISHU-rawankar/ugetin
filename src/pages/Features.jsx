@@ -70,6 +70,8 @@ const keyFeatureData = {
 };
 
 
+import WhyUGate from "../components/common/WhyUGate";
+
 export default function Features() {
     const d = featuresPageData;
     return (
@@ -78,26 +80,7 @@ export default function Features() {
             <KeyFeature data={keyFeatureData} />
             <ManagementWorkflow />
             <WhyChooseUs />
-
-            {/* CTA */}
-            <section className="section cta-section" >
-                <div className="container">
-                    <div className="cta-content">
-                        <h2>{d.cta.title}</h2>
-                        <p>{d.cta.subtitle}</p>
-                        <div className="cta-buttons">
-                            <Link to="/pricing" className="btn btn-primary btn-large">
-                                <span>Get Started Free</span>
-                                <i className="fas fa-arrow-right"></i>
-                            </Link>
-                            <Link to="/contact" className="btn btn-secondary btn-large">
-                                <span>Schedule Demo</span>
-                                <i className="fas fa-calendar"></i>
-                            </Link>
-                        </div>
-                    </div>
-                </div>
-            </section>
+            <WhyUGate />
         </>
     );
 }

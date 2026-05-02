@@ -32,54 +32,51 @@ const SecurityHero = ({ data = {} }) => {
                 position: "relative",
                 width: "100%",
                 height: isMobile ? "auto" : "100vh",
-                minHeight: isMobile ? "auto" : "750px",
+                minHeight: isMobile ? "600px" : "600px",
                 overflow: "hidden",
-                background: "#ffffff",
+                background: `#f5f5f5`,
                 display: "flex",
+                flexDirection: isMobile ? "column" : "row",
                 alignItems: "center"
             }}
         >
-            {/* Background Decorative Text */}
-            {!isMobile && (
-                <div style={{
-                    position: "absolute",
-                    top: "50%",
-                    left: "5%",
-                    transform: "translateY(-50%)",
-                    fontSize: "15vw",
-                    fontWeight: 900,
-                    color: "rgba(0,0,0,0.03)",
-                    lineHeight: 1,
-                    zIndex: 0,
-                    pointerEvents: "none",
-                    whiteSpace: "nowrap",
-                    fontFamily: "inherit"
-                }}>
-                    AURORA
-                </div>
-            )}
+            {/* Background Image Layer (Mobile: Top, Desktop: Right Half) */}
+            <div style={{
+                position: isMobile ? "relative" : "absolute",
+                top: 0,
+                right: 0,
+                width: isMobile ? "100%" : "55%",
+                height: isMobile ? "350px" : "100%",
+                backgroundImage: `url('/guard_hero_new.png')`,
+                backgroundSize: "cover",
+                backgroundPosition: isMobile ? "center top" : "center right",
+                zIndex: 0,
+                maskImage: isMobile ? "linear-gradient(to bottom, black 75%, transparent)" : "linear-gradient(to right, transparent, black 25%)",
+                WebkitMaskImage: isMobile ? "linear-gradient(to bottom, black 75%, transparent)" : "linear-gradient(to right, transparent, black 25%)",
+                display: "block"
+            }} />
 
             <div className="container" style={{ 
                 maxWidth: "1500px", 
                 margin: "0 auto", 
                 zIndex: 1, 
                 position: "relative",
-                padding: isMobile ? "80px 20px" : "0 100px"
+                padding: isMobile ? "40px 20px 80px" : "0 100px"
             }}>
                 <div style={{ 
                     display: "flex", 
                     flexDirection: isMobile ? "column" : "row",
                     alignItems: "center",
                     justifyContent: "flex-start",
-                    gap: "60px"
+                    gap: isMobile ? "32px" : "60px"
                 }}>
                     
-                    {/* Left: Content */}
+                    {/* Content */}
                     <motion.div
                         initial={{ opacity: 0, x: -30 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-                        style={{ flex: isMobile ? "1" : "0 1 800px" }}
+                        style={{ flex: isMobile ? "1" : "0 1 800px", textAlign: isMobile ? "center" : "left" }}
                     >
                         {/* Badge */}
                         <div style={{
@@ -100,14 +97,14 @@ const SecurityHero = ({ data = {} }) => {
                         <h1
                             style={{
                                 fontFamily: "'Bebas Neue', sans-serif",
-                                fontSize: isMobile ? "3.5rem" : "clamp(4.5rem, 8vw, 6.5rem)",
+                                fontSize: isMobile ? "3rem" : "clamp(4.5rem, 8vw, 6.5rem)",
                                 fontWeight: 400,
                                 color: "#000000",
                                 letterSpacing: "-0.01em",
                                 marginBottom: "20px",
                                 lineHeight: 0.9,
                                 textTransform: "uppercase",
-                                whiteSpace: "nowrap"
+                                whiteSpace: "normal"
                             }}
                         >
                             FOR SECURITY
@@ -117,11 +114,12 @@ const SecurityHero = ({ data = {} }) => {
                         <p
                             style={{
                                 fontFamily: "'DM Sans', sans-serif",
-                                fontSize: isMobile ? "1.05rem" : "1.2rem",
+                                fontSize: isMobile ? "1rem" : "1.2rem",
                                 color: "#444444",
                                 lineHeight: 1.6,
                                 marginBottom: "40px",
-                                maxWidth: "520px",
+                                maxWidth: isMobile ? "100%" : "520px",
+                                margin: isMobile ? "0 auto 40px" : "0 0 40px"
                             }}
                         >
                             {description}
@@ -189,46 +187,9 @@ const SecurityHero = ({ data = {} }) => {
                         </div>
                     </motion.div>
 
-                    {/* Right: Security Guard Cutout */}
+                    {/* Right side is now part of the background */}
                     {!isMobile && (
-                        <motion.div
-                            initial={{ opacity: 0, x: 50 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
-                            style={{ 
-                                flex: "1",
-                                display: "flex",
-                                justifyContent: "flex-end",
-                                position: "relative",
-                                height: "100vh",
-                                alignItems: "flex-end",
-                                overflow: "hidden"
-                            }}
-                        >
-                            {/* Ambient Glow */}
-                            <div style={{
-                                position: "absolute",
-                                width: "150%",
-                                height: "100%",
-                                background: "radial-gradient(circle, rgba(0,0,0,0.05) 0%, rgba(255,255,255,0) 70%)",
-                                zIndex: -1,
-                                top: "10%"
-                            }} />
-
-                            <img 
-                                src="/indian_guard_folded.png" 
-                                alt="Professional Indian Security Guard"
-                                style={{
-                                    height: "115%",
-                                    width: "auto",
-                                    maxHeight: "none",
-                                    filter: "drop-shadow(30px 20px 60px rgba(0,0,0,0.1))",
-                                    objectFit: "contain",
-                                    display: "block",
-                                    transform: "translateY(10%)"
-                                }}
-                            />
-                        </motion.div>
+                        <div style={{ flex: "1" }} />
                     )}
                 </div>
             </div>

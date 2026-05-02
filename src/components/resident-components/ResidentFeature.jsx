@@ -132,13 +132,20 @@
 
 // export default ResidentFeature;
 
-import { motion } from "framer-motion";
-import { Bell, CreditCard, AlertCircle } from "lucide-react";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Link } from "react-router-dom";
+import { Bell, CreditCard, AlertCircle, Shield, Wallet, Megaphone, Package, Calendar } from "lucide-react";
 
 const iconMap = {
   bell: Bell,
   "credit-card": CreditCard,
   "alert-circle": AlertCircle,
+  shield: Shield,
+  wallet: Wallet,
+  megaphone: Megaphone,
+  package: Package,
+  calendar: Calendar,
 };
 
 const containerVariants = {
@@ -166,16 +173,19 @@ const cardVariants = {
 
 const ResidentFeature = ({ data = {} }) => {
   const { heading = {}, subtitle = "", items = [] } = data;
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  const activeFeature = items[activeIndex] || items[0];
 
   return (
     <section
       style={{
-        padding: "64px 24px",
+        padding: "40px 24px",
         background: "#000000",
       }}
     >
       {/* Header Container - Centered */}
-      <div style={{ textAlign: "center", marginBottom: "64px", maxWidth: "800px", margin: "0 auto 64px" }}>
+      <div style={{ textAlign: "center", marginBottom: "32px", maxWidth: "800px", margin: "0 auto 32px" }}>
         <motion.div
           initial={{ opacity: 0, y: 14 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -192,6 +202,7 @@ const ResidentFeature = ({ data = {} }) => {
               letterSpacing: "1px",
               lineHeight: 1,
               margin: 0,
+              textTransform: "uppercase",
             }}
           >
             {heading.line1} {heading.line2}
@@ -219,74 +230,128 @@ const ResidentFeature = ({ data = {} }) => {
       <style>{`
         .resident-feature-layout {
           display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 64px;
+          grid-template-columns: 450px 1fr;
+          gap: 40px;
           align-items: center;
-          max-width: 1200px;
+          max-width: 1300px;
           margin: 0 auto;
+          position: relative;
         }
 
         .resident-feature-cards-col {
           display: flex;
           flex-direction: column;
-          gap: 20px;
+          gap: 10px;
         }
 
         .resident-feature-content-col {
           display: flex;
           flex-direction: column;
-          gap: 24px;
+          gap: 16px;
+          padding: 32px;
+          background: rgba(255, 255, 255, 0.02);
+          border: 1px solid rgba(255, 255, 255, 0.05);
+          border-radius: 20px;
+          min-height: 320px;
+          position: relative;
+          overflow: hidden;
+        }
+
+        .resident-feature-content-col::before {
+          content: '';
+          position: absolute;
+          top: -80px;
+          right: -80px;
+          width: 250px;
+          height: 250px;
+          background: radial-gradient(circle, rgba(255,255,255,0.03) 0%, transparent 70%);
+          pointer-events: none;
         }
 
         .resident-feature-card {
-          padding: 24px;
-          background: #111111;
-          border: 1px solid rgba(255, 255, 255, 0.08);
+          padding: 12px 20px;
+          background: #0a0a0a;
+          border: 1px solid rgba(255, 255, 255, 0.05);
           border-radius: 12px;
           display: grid;
           grid-template-columns: auto 1fr;
-          gap: 20px;
+          gap: 14px;
           align-items: center;
-          transition: all 0.4s ease;
+          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
           cursor: pointer;
+          position: relative;
         }
 
         .resident-feature-card:hover {
-          background: #1a1a1a;
-          border-color: rgba(255, 255, 255, 0.2);
-          transform: translateX(10px);
+          background: #111111;
+          border-color: rgba(255, 255, 255, 0.1);
+          transform: translateX(8px);
+        }
+
+        .resident-feature-card.active {
+          background: #ffffff;
+          border-color: #ffffff;
+          transform: translateX(12px);
+          box-shadow: 0 10px 30px rgba(255, 255, 255, 0.1);
+        }
+
+        .resident-feature-card.active p {
+          color: #000000;
+          font-weight: 700;
+        }
+
+        .resident-feature-card.active .icon-box {
+          background: rgba(0,0,0,0.08) !important;
+        }
+
+        .resident-feature-card.active .icon-box svg {
+          color: #000000 !important;
         }
 
         .feature-bullet-list {
           list-style: none;
           padding: 0;
           margin: 0;
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 14px;
         }
 
         .feature-bullet-item {
           display: flex;
-          align-items: center;
-          gap: 12px;
-          margin-bottom: 16px;
+          align-items: flex-start;
+          gap: 10px;
           font-family: 'DM Sans', sans-serif;
-          color: #ffffff;
-          font-weight: 500;
+          color: #a0a0a0;
+          font-size: 0.9rem;
+          line-height: 1.3;
         }
 
-        .bullet-dot {
-          width: 6px;
-          height: 6px;
-          background: #ffffff;
+        .bullet-icon {
+          width: 18px;
+          height: 18px;
+          background: rgba(255, 255, 255, 0.1);
           border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-shrink: 0;
+          margin-top: 2px;
         }
 
-        @media (max-width: 991px) {
+        .bullet-icon svg {
+          width: 10px;
+          height: 10px;
+          color: #ffffff;
+        }
+
+        @media (max-width: 1100px) {
           .resident-feature-layout {
             grid-template-columns: 1fr;
             gap: 40px;
           }
-          .resident-feature-card:hover {
-            transform: translateY(-5px);
+          .feature-bullet-list {
+            grid-template-columns: 1fr;
           }
         }
       `}</style>
@@ -300,16 +365,18 @@ const ResidentFeature = ({ data = {} }) => {
           whileInView="visible"
           viewport={{ once: true }}
         >
-          {items.map((item) => {
+          {items.map((item, index) => {
             const Icon = iconMap[item.icon] || Bell;
+            const isActive = activeIndex === index;
 
             return (
               <motion.div
                 key={item.title}
                 variants={cardVariants}
-                className="resident-feature-card"
+                className={`resident-feature-card ${isActive ? 'active' : ''}`}
+                onClick={() => setActiveIndex(index)}
               >
-                <div style={{
+                <div className="icon-box" style={{
                   width: "48px",
                   height: "48px",
                   borderRadius: "10px",
@@ -319,7 +386,7 @@ const ResidentFeature = ({ data = {} }) => {
                   justifyContent: "center",
                   flexShrink: 0
                 }}>
-                  <Icon size={24} color="#ffffff" strokeWidth={1.5} />
+                  <Icon size={24} color={isActive ? "#000000" : "#ffffff"} strokeWidth={1.5} />
                 </div>
 
                 <div>
@@ -327,8 +394,9 @@ const ResidentFeature = ({ data = {} }) => {
                     fontFamily: "'DM Sans', sans-serif",
                     fontSize: "1.1rem",
                     fontWeight: 600,
-                    color: "#ffffff",
-                    margin: 0
+                    color: isActive ? "#000000" : "#ffffff",
+                    margin: 0,
+                    transition: "color 0.3s ease"
                   }}>
                     {item.title}
                   </p>
@@ -339,40 +407,82 @@ const ResidentFeature = ({ data = {} }) => {
         </motion.div>
 
         {/* Right Side: Content */}
-        <motion.div
-          className="resident-feature-content-col"
-          initial={{ opacity: 0, x: 30 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-        >
-          <p style={{
-            fontFamily: "'DM Sans', sans-serif",
-            fontSize: "1.15rem",
-            color: "#a0a0a0",
-            lineHeight: 1.7,
-            margin: 0
-          }}>
-            Experience a smarter way of living with our comprehensive resident toolset. 
-            From instant security alerts to seamless payment processing, everything you need 
-            is integrated into one intuitive interface designed for the modern society member.
-          </p>
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={activeIndex}
+            className="resident-feature-content-col"
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -20 }}
+            transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <div style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "12px",
+              marginBottom: "4px"
+            }}>
+              <div style={{
+                width: "32px",
+                height: "2px",
+                background: "#ffffff"
+              }} />
+              <span style={{
+                fontFamily: "'DM Sans', sans-serif",
+                fontSize: "0.9rem",
+                color: "#ffffff",
+                textTransform: "uppercase",
+                letterSpacing: "2px",
+                fontWeight: 600
+              }}>
+                Feature Focus
+              </span>
+            </div>
+            
+            <h3 style={{
+              fontFamily: "'Bebas Neue', sans-serif",
+              fontSize: "clamp(1.8rem, 3vw, 2.5rem)",
+              color: "#ffffff",
+              lineHeight: 1,
+              margin: "0 0 6px 0",
+              letterSpacing: "1px"
+            }}>
+              {activeFeature?.title}
+            </h3>
+            
+            <p style={{
+              fontFamily: "'DM Sans', sans-serif",
+              fontSize: "1.05rem",
+              color: "#ffffff",
+              lineHeight: 1.5,
+              margin: "0 0 20px 0",
+              fontWeight: 400,
+              opacity: 0.8
+            }}>
+              {activeFeature?.description}
+            </p>
 
-          <div className="feature-bullet-list">
-            <div className="feature-bullet-item">
-              <div className="bullet-dot" />
-              <span>Real-time digital notice board for all society updates.</span>
+            <div style={{
+              height: "1px",
+              background: "rgba(255, 255, 255, 0.1)",
+              margin: "4px 0 20px 0"
+            }} />
+
+            <div className="feature-bullet-list">
+              {activeFeature?.bullets?.map((bullet, i) => (
+                <div key={i} className="feature-bullet-item">
+                  <div className="bullet-icon">
+                    <svg viewBox="0 0 10 10" fill="none">
+                      <path d="M2 5L4 7L8 3" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </div>
+                  <span>{bullet}</span>
+                </div>
+              ))}
             </div>
-            <div className="feature-bullet-item">
-              <div className="bullet-dot" />
-              <span>Secure, one-tap maintenance and utility bill payments.</span>
-            </div>
-            <div className="feature-bullet-item">
-              <div className="bullet-dot" />
-              <span>Instant complaint tracking and resolution management.</span>
-            </div>
-          </div>
-        </motion.div>
+
+          </motion.div>
+        </AnimatePresence>
       </div>
     </section>
   );

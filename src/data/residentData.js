@@ -22,22 +22,76 @@ export const residentData = {
         subtitle: "Manage society living with your resident app.",
         items: [
             {
-                id: "notices",
-                icon: "bell",
-                title: "View Society Notices",
-                description: "Manage members, flats & vehicles",
+                id: "security",
+                icon: "shield",
+                title: "Smart Security & Visitor Management",
+                description: "No more surprise visitors. Full control in your hands.",
+                bullets: [
+                    "Approve or reject visitors instantly",
+                    "Get real-time alerts for every entry",
+                    "OTP / QR-based secure access",
+                    "Track delivery agents & guests"
+                ]
             },
             {
                 id: "maintenance",
-                icon: "credit-card",
-                title: "Pay Maintenance",
-                description: "Pay maintenance bills securely within the app",
+                icon: "wallet",
+                title: "Easy Online Maintenance Payments",
+                description: "Say goodbye to cash & manual tracking.",
+                bullets: [
+                    "Pay society dues via UPI, cards, net banking",
+                    "Auto reminders for pending payments",
+                    "Download receipts anytime",
+                    "Transparent billing system"
+                ]
+            },
+            {
+                id: "notices",
+                icon: "megaphone",
+                title: "Instant Communication & Notices",
+                description: "Stay informed, always.",
+                bullets: [
+                    "Get instant updates from society admin",
+                    "Important notices directly on your phone",
+                    "Emergency alerts in real-time",
+                    "No more missed announcements"
+                ]
             },
             {
                 id: "complaints",
                 icon: "alert-circle",
-                title: "Raise Complaints",
-                description: "Track visitors & improve security",
+                title: "Complaint & Service Requests",
+                description: "No chasing. Everything tracked digitally.",
+                bullets: [
+                    "Raise complaints in seconds",
+                    "Track status live",
+                    "Faster resolution by society staff",
+                    "Complete service history"
+                ]
+            },
+            {
+                id: "delivery",
+                icon: "package",
+                title: "Parcel & Delivery Management",
+                description: "Your deliveries, always safe.",
+                bullets: [
+                    "Get notified when parcels arrive",
+                    "Secure delivery handling at gate",
+                    "Avoid lost/missed deliveries",
+                    "Track all packages easily"
+                ]
+            },
+            {
+                id: "amenities",
+                icon: "calendar",
+                title: "Book Amenities Easily",
+                description: "Enjoy your society amenities without hassle.",
+                bullets: [
+                    "Book clubhouse, gym, hall, etc.",
+                    "Check availability instantly",
+                    "Avoid conflicts & double booking",
+                    "Seamless scheduling"
+                ]
             },
         ],
     },
