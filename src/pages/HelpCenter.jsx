@@ -808,7 +808,7 @@ const HelpCenter = ({
         style={{
           maxWidth: "900px",
           margin: "0 auto",
-          marginTop: isMobile ? "80px" : "50px",
+          marginTop: isMobile ? "100px" : "80px",
           padding: isMobile ? "20px 12px" : "40px 16px",
         }}
       >

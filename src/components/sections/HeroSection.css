@@ -12,18 +12,19 @@
 .hero-v2 .container {
     max-width: 1300px;
     margin: 0 auto;
-    padding: 0 40px;
+    padding: 70px 40px 0;
     display: flex;
     align-items: center;
     gap: 0;
     flex: 1;
+    position: relative;
 }
 
 .hero-left {
     flex: 1;
     max-width: 1000px;
     z-index: 20;
-    pointer-events: none; /* Allow interaction with elements behind if needed, but buttons should be clickable */
+    pointer-events: none;
 }
 
 .hero-left * {
@@ -59,7 +60,6 @@
     margin-bottom: 24px;
     text-transform: uppercase;
     letter-spacing: -2px;
-    white-space: nowrap;
 }
 
 .hero-description {
@@ -167,55 +167,37 @@
     line-height: 1.2;
 }
 
-/* Hero Right Side */
+/* Hero Right Side - The B&W Premium Look */
 .hero-right {
     flex: 1;
     position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    height: 100vh;
 }
 
 .hero-visual-wrapper {
-    position: relative;
-    width: 900px;
-    height: 100vh;
-    margin: 0 auto;
-    left: -150px;
+    position: absolute;
+    right: -100px;
+    top: 0;
+    width: 1000px;
+    height: 100%;
+    overflow: hidden;
+    /* Removed large curved left edge */
+    border-radius: 0;
 }
 
 .hero-blob {
+    display: none;
+}
+
+.hero-building {
     position: absolute;
     inset: 0;
     width: 100%;
     height: 100%;
-    background: #000;
-    border-radius: 0;
-    z-index: 1;
-}
-
-.hero-building {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    display: block;
     object-fit: cover;
-    border-radius: 0;
     z-index: 2;
+    /* Removed filters to keep image same */
 }
-
-
-
-/* Floating Cards */
-
-
-
-
-
-
-
-
-
 
 /* Footer Bar */
 .hero-footer-bar {
@@ -277,48 +259,92 @@
 }
 
 @media (max-width: 1024px) {
+    .hero-v2 {
+        padding-top: 100px;
+        height: auto;
+        min-height: 100vh;
+    }
+
     .hero-v2 .container {
         flex-direction: column;
         text-align: center;
-        padding: 60px 20px 0;
+        padding: 0 20px;
     }
-    
+
     .hero-left {
         max-width: 100%;
+        padding-right: 0;
+        margin-bottom: 20px;
         display: flex;
         flex-direction: column;
         align-items: center;
     }
-    
-    .hero-label::after {
-        left: 50%;
-        transform: translateX(-50%);
-    }
-    
+
     .hero-title {
-        font-size: 48px;
+        font-size: clamp(32px, 8vw, 48px);
+        line-height: 1.1;
+        white-space: normal;
+    }
+
+    .hero-description {
+        margin: 20px auto 30px;
+        font-size: 16px;
+    }
+
+    .hero-actions {
+        justify-content: center;
+        flex-direction: column;
+        gap: 12px;
+        width: 100%;
+        max-width: 320px;
+    }
+
+    .hero-actions .btn-black,
+    .hero-actions .btn-outline {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .hero-right {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .hero-visual-wrapper {
+        height: auto;
+        aspect-ratio: 4/3;
+        margin-top: 0;
+        width: 100%;
+        max-width: 500px;
+        position: relative;
+        left: 0;
+        transform: none;
+        border-radius: 20px;
+    }
+
+    .hero-building {
+        position: relative;
+        border-radius: 20px;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .hero-footer-bar {
+        position: relative;
+        bottom: 0;
+        margin-top: 60px;
+        padding: 20px 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: 36px;
     }
     
     .hero-visual-wrapper {
-        height: 500px;
-        margin-top: 40px;
-        left: 0;
-        width: 100%;
-    }
-    
-    .hero-blob, .hero-building {
-        width: 100%;
-        right: 0;
-        border-radius: 200px 200px 0 0;
-    }
-    
-
-    
-    .hero-footer-bar {
-        width: 100%;
-        border-radius: 0;
-        flex-wrap: wrap;
-        gap: 20px;
-        padding: 40px 20px;
+        aspect-ratio: 1/1;
     }
 }

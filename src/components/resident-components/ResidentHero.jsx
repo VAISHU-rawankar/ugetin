@@ -78,6 +78,7 @@ const ResidentHero = ({ data = {} }) => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+                className="resident-hero-content"
                 style={{
                     position: "relative",
                     zIndex: 2,

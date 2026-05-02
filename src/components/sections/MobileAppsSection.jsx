@@ -171,15 +171,23 @@ const PhoneMockup = ({ screen, index }) => (
         <div style={{ background: "#f8f8f8", padding: "8px 10px 6px", borderBottom: "1px solid #eee" }}>
             <div style={{ fontSize: "11px", fontWeight: 700, color: "#111" }}>{screen.label}</div>
         </div>
+        {/* Society Flat Image */}
+        <div style={{ height: "80px", overflow: "hidden" }}>
+            <img 
+                src={screen.id === "resident" ? "/society-flat-screen.png" : "/society-flat-security.png"} 
+                alt={screen.label} 
+                style={{ width: "100%", height: "100%", objectFit: "cover" }} 
+            />
+        </div>
         {/* Rows */}
-        <div style={{ padding: "6px 8px", display: "flex", flexDirection: "column", gap: "6px" }}>
+        <div style={{ padding: "6px 8px", display: "flex", flexDirection: "column", gap: "4px" }}>
             {screen.rows.map((row, i) => (
-                <div key={i} style={{ background: "#f4f4f4", borderRadius: "6px", padding: "5px 7px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                    <div style={{ fontSize: "7.5px", color: "#333", fontWeight: 500, flex: 1, overflow: "hidden", whiteSpace: "nowrap", textOverflow: "ellipsis" }}>
+                <div key={i} style={{ background: "#f4f4f4", borderRadius: "4px", padding: "4px 6px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                    <div style={{ fontSize: "7px", color: "#333", fontWeight: 500, flex: 1, overflow: "hidden", whiteSpace: "nowrap", textOverflow: "ellipsis" }}>
                         {row.text}
                     </div>
                     {row.badge && (
-                        <div style={{ fontSize: "6.5px", background: "#e0e0e0", borderRadius: "4px", padding: "1px 4px", color: "#555", marginLeft: "4px", flexShrink: 0 }}>
+                        <div style={{ fontSize: "6px", background: "#e0e0e0", borderRadius: "3px", padding: "1px 3px", color: "#555", marginLeft: "4px", flexShrink: 0 }}>
                             {row.badge}
                         </div>
                     )}
@@ -248,114 +256,181 @@ const MobileAppsSection = () => {
 
     return (
         <div>
-            {/* ── Top Band: Features + Phones ─────────────────────────────────── */}
+            {/* ── Top Band: Split Layout Content + Image/Phones ─────────────────── */}
             <section style={{
                 position: "relative",
                 width: "100%",
-                overflow: "hidden",
-                padding: "40px 0",
-                marginTop: "20px", 
-                borderBottom: "1px solid #ebebeb"
+                background: "#ffffff",
+                borderBottom: "1px solid #ebebeb",
+                overflow: "hidden"
             }}>
-                {/* Full background image */}
-                <img
-                    src="/Resident-Security.png"
-                    alt=""
-                    aria-hidden="true"
-                    style={{
-                        display: "block",
-                        width: "100%",
-                        height: "100%",
-                        objectFit: isMobile ? "contain" : "cover",
-                        position: "absolute",
-                        top: 0,
-                        left: 0,
-                        transform: "scaleX(-1)", 
-                        userSelect: "none",
-                        pointerEvents: "none",
-                        zIndex: 0,
-                        opacity: isMobile ? 0.3 : 1
-                    }}
-                />
-
-                <div className="container" style={{ position: "relative", zIndex: 2 }}>
-                    <div style={{ display: "flex", alignItems: "center", justifyContent: "flex-start", gap: "32px", flexWrap: "wrap", minHeight: "350px" }}>
-
-                        {/* Text Content - Right Side */}
-                        <motion.div
-                            variants={containerVariants}
-                            initial="hidden"
-                            whileInView="visible"
-                            viewport={{ once: true, amount: 0.3 }}
-                            style={{ 
-                                flex: "1 1 500px", 
-                                maxWidth: isMobile ? "100%" : "700px", 
-                                textAlign: isMobile ? "center" : "left", 
-                                marginLeft: isMobile ? "0" : "42%",
-                                padding: isMobile ? "0 20px" : "0"
-                            }}
-                        >
-                            <motion.h2
-                                variants={fadeUp}
-                                style={{
-                                    fontSize: "clamp(1.6rem, 3.2vw, 2.8rem)",
-                                    fontWeight: 800,
-                                    color: "#000",
-                                    letterSpacing: "-0.03em",
-                                    lineHeight: 1.2,
-                                    marginBottom: "1rem",
-                                }}
+                <div className="container" style={{ padding: 0 }}>
+                    <div style={{ 
+                        display: "flex", 
+                        flexDirection: isMobile ? "column" : "row",
+                        alignItems: "stretch",
+                        minHeight: "650px"
+                    }}>
+                        
+                        {/* Left Side: Text Content */}
+                        <div style={{ 
+                            flex: isMobile ? "1" : "0 0 55%", 
+                            padding: isMobile ? "60px 24px" : "80px 60px",
+                            display: "flex",
+                            flexDirection: "column",
+                            justifyContent: "center",
+                            background: "#fff",
+                            zIndex: 2
+                        }}>
+                            <motion.div
+                                variants={containerVariants}
+                                initial="hidden"
+                                whileInView="visible"
+                                viewport={{ once: true, amount: 0.3 }}
                             >
-                                {sectionData.heading}
-                            </motion.h2>
+                                <motion.h2
+                                    variants={fadeUp}
+                                    style={{
+                                        fontSize: "clamp(2rem, 4vw, 3.5rem)",
+                                        fontWeight: 800,
+                                        color: "#000",
+                                        letterSpacing: "-0.04em",
+                                        lineHeight: 1.1,
+                                        marginBottom: "1.5rem",
+                                        fontFamily: "'Outfit', sans-serif"
+                                    }}
+                                >
+                                    {sectionData.heading}
+                                </motion.h2>
 
-                            <motion.p
-                                variants={fadeUp}
+                                <motion.p
+                                    variants={fadeUp}
+                                    style={{
+                                        fontSize: "1.15rem",
+                                        color: "#555",
+                                        lineHeight: 1.6,
+                                        marginBottom: "2.5rem",
+                                        maxWidth: "540px",
+                                    }}
+                                >
+                                    We are a modern platform focused on <RotatingText /> management.
+                                    <br />
+                                    Innovation is the one word we love and we put it into our work everyday.
+                                </motion.p>
+
+                                {/* 2-column feature grid */}
+                                <div style={{ 
+                                    display: "grid", 
+                                    gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", 
+                                    gap: "24px",
+                                    maxWidth: "600px"
+                                }}>
+                                    {/* Left col */}
+                                    <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
+                                        {leftFeatures.map((feat) => (
+                                            <motion.div
+                                                key={feat.id}
+                                                variants={fadeLeft}
+                                                style={{ display: "flex", alignItems: "center", gap: "14px", cursor: "default" }}
+                                            >
+                                                <span style={{ 
+                                                    flexShrink: 0, 
+                                                    width: "36px", 
+                                                    height: "36px", 
+                                                    background: "#f8f8f8", 
+                                                    borderRadius: "10px", 
+                                                    display: "flex", 
+                                                    alignItems: "center", 
+                                                    justifyContent: "center" 
+                                                }}>
+                                                    {icons[feat.icon]}
+                                                </span>
+                                                <span style={{ fontSize: "1.05rem", fontWeight: 600, color: "#111" }}>{feat.label}</span>
+                                            </motion.div>
+                                        ))}
+                                    </div>
+                                    {/* Right col */}
+                                    <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
+                                        {rightFeatures.map((feat) => (
+                                            <motion.div
+                                                key={feat.id}
+                                                variants={fadeLeft}
+                                                style={{ display: "flex", alignItems: "center", gap: "14px", cursor: "default" }}
+                                            >
+                                                <span style={{ 
+                                                    flexShrink: 0, 
+                                                    width: "36px", 
+                                                    height: "36px", 
+                                                    background: "#f8f8f8", 
+                                                    borderRadius: "10px", 
+                                                    display: "flex", 
+                                                    alignItems: "center", 
+                                                    justifyContent: "center" 
+                                                }}>
+                                                    {icons[feat.icon]}
+                                                </span>
+                                                <span style={{ fontSize: "1.05rem", fontWeight: 600, color: "#111" }}>{feat.label}</span>
+                                            </motion.div>
+                                        ))}
+                                    </div>
+                                </div>
+                            </motion.div>
+                        </div>
+
+                        {/* Right Side: Image + Phones */}
+                        <div style={{ 
+                            flex: isMobile ? "1" : "0 0 45%", 
+                            position: "relative",
+                            minHeight: isMobile ? "400px" : "auto",
+                            overflow: "hidden",
+                            background: "#f4f4f4"
+                        }}>
+                            {/* Society image as background of this side */}
+                            <img
+                                src="/society-flat.png"
+                                alt="Modern Society"
                                 style={{
-                                    fontSize: "1.05rem",
-                                    color: "#444",
-                                    lineHeight: 1.6,
-                                    marginBottom: "2rem",
-                                    maxWidth: "500px",
+                                    width: "100%",
+                                    height: "100%",
+                                    objectFit: "cover",
+                                    position: "absolute",
+                                    top: 0,
+                                    left: 0,
+                                    zIndex: 0,
+                                    filter: "grayscale(100%) brightness(0.8)"
                                 }}
-                            >
-                                We are a modern platform focused on <RotatingText /> management.
-                                <br />
-                                Innovation is the one word we love and we put it into our work everyday.
-                            </motion.p>
+                            />
+                            {/* Overlay for better phone contrast */}
+                            <div style={{
+                                position: "absolute",
+                                top: 0,
+                                left: 0,
+                                width: "100%",
+                                height: "100%",
+                                background: "rgba(0,0,0,0.1)",
+                                zIndex: 1
+                            }} />
 
-                            {/* 2-column feature grid */}
-                            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))", gap: "16px 32px" }}>
-                                {/* Left col */}
-                                <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
-                                    {leftFeatures.map((feat) => (
-                                        <motion.div
-                                            key={feat.id}
-                                            variants={fadeLeft}
-                                            whileHover={{ x: 4, transition: { duration: 0.18 } }}
-                                            style={{ display: "flex", alignItems: "center", gap: "12px", cursor: "default", justifyContent: isMobile ? "center" : "flex-start" }}
-                                        >
-                                            <span style={{ flexShrink: 0 }}>{icons[feat.icon]}</span>
-                                            <span style={{ fontSize: "1rem", fontWeight: 500, color: "#000" }}>{feat.label}</span>
-                                        </motion.div>
-                                    ))}
-                                </div>
-                                {/* Right col */}
-                                <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
-                                    {rightFeatures.map((feat) => (
-                                        <motion.div
-                                            key={feat.id}
-                                            variants={fadeLeft}
-                                            whileHover={{ x: 4, transition: { duration: 0.18 } }}
-                                            style={{ display: "flex", alignItems: "center", gap: "12px", cursor: "default", justifyContent: isMobile ? "center" : "flex-start" }}
-                                        >
-                                            <span style={{ flexShrink: 0 }}>{icons[feat.icon]}</span>
-                                            <span style={{ fontSize: "1rem", fontWeight: 500, color: "#000" }}>{feat.label}</span>
-                                        </motion.div>
-                                    ))}
-                                </div>
+                            {/* Floating Phones Container */}
+                            <div style={{ 
+                                position: "relative", 
+                                zIndex: 2, 
+                                height: "100%", 
+                                display: "flex", 
+                                alignItems: "center", 
+                                justifyContent: "center",
+                                gap: "20px",
+                                padding: "40px"
+                            }}>
+                                {phoneScreens.map((screen, idx) => (
+                                    <div key={screen.id} style={{
+                                        transform: idx === 0 ? "translateY(-20px)" : "translateY(20px)"
+                                    }}>
+                                        <PhoneMockup screen={screen} index={idx} />
+                                    </div>
+                                ))}
                             </div>
-                        </motion.div>
+                        </div>
 
                     </div>
                 </div>
@@ -388,34 +463,31 @@ const MobileAppsSection = () => {
                         {sectionData.ctaHeading}
                     </h2>
                     <motion.div
-                        whileHover={{ scale: 1.04, background: "#111" }}
-                        whileTap={{ scale: 0.97 }}
+                        whileHover={{ scale: 1.01 }}
+                        whileTap={{ scale: 0.99 }}
                         transition={{ duration: 0.2 }}
+                        style={{ maxWidth: "800px", margin: "0 auto" }}
                     >
                         <Link
                             to="/contact"
                             style={{
-                                display: "inline-block",
-                                background: "transparent",
-                                color: "#111",
-                                border: "2px solid #111",
-                                borderRadius: "8px",
-                                padding: "13px 32px",
-                                fontSize: "0.95rem",
-                                fontWeight: 600,
-                                letterSpacing: "-0.01em",
+                                display: "flex",
+                                alignItems: "center",
+                                justifyContent: "center",
+                                width: "100%",
+                                background: "#000",
+                                color: "#fff",
+                                border: "none",
+                                borderRadius: "0px",
+                                padding: "24px 32px",
+                                fontSize: "1.1rem",
+                                fontWeight: 800,
+                                letterSpacing: "2px",
+                                textTransform: "uppercase",
                                 cursor: "pointer",
                                 textDecoration: "none",
-                                fontFamily: "inherit",
-                                transition: "all 0.2s ease",
-                            }}
-                            onMouseEnter={(e) => {
-                                e.currentTarget.style.color = "#fff";
-                                e.currentTarget.style.background = "#111";
-                            }}
-                            onMouseLeave={(e) => {
-                                e.currentTarget.style.color = "#111";
-                                e.currentTarget.style.background = "transparent";
+                                transition: "all 0.3s ease",
+                                fontFamily: "'Bebas Neue', sans-serif"
                             }}
                         >
                             {sectionData.ctaButton}

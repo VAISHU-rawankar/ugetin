@@ -10,7 +10,7 @@ const BlogFilter = ({ filters = [], onFilter }) => {
     };
 
     return (
-        <div style={{
+        <div className="blog-categories" style={{
             display: "flex",
             gap: "4px",
             alignItems: "center",
@@ -24,6 +24,7 @@ const BlogFilter = ({ filters = [], onFilter }) => {
                 <button
                     key={filter}
                     onClick={() => handleClick(filter)}
+                    className="category-btn"
                     style={{
                         padding: "7px 18px",
                         borderRadius: "8px",

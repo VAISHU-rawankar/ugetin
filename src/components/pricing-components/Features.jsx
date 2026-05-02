@@ -1,6 +1,15 @@
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { useState, useRef } from "react";
 
+import { 
+    Shield, 
+    BarChart, 
+    MessageSquare, 
+    Smartphone, 
+    CreditCard, 
+    Wrench 
+} from "lucide-react";
+
 const CheckIcon = () => (
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0, marginTop: "4px" }}>
         <polyline points="20 6 9 17 4 12"></polyline>
@@ -100,7 +109,7 @@ const Features = () => {
         {
             title: "SECURITY FEATURES",
             badge: "Free",
-            icon: "🛡️",
+            icon: <Shield size={32} strokeWidth={1.5} color="#fff" />,
             items: [
                 "Smart Gate Approval System",
                 "Digital Visitor Management",
@@ -115,7 +124,7 @@ const Features = () => {
         {
             title: "DATA MANAGEMENT",
             badge: "Free",
-            icon: "📊",
+            icon: <BarChart size={32} strokeWidth={1.5} color="#fff" />,
             items: [
                 "Hierarchical Tags",
                 "Searchable Database",
@@ -130,7 +139,7 @@ const Features = () => {
         {
             title: "COMMUNICATION",
             badge: "Free",
-            icon: "💬",
+            icon: <MessageSquare size={32} strokeWidth={1.5} color="#fff" />,
             items: [
                 "Omnichannel Logs",
                 "Broadcast Notices",
@@ -145,7 +154,7 @@ const Features = () => {
         {
             title: "SERVICES INTEGRATION",
             badge: "Free",
-            icon: "📱",
+            icon: <Smartphone size={32} strokeWidth={1.5} color="#fff" />,
             items: [
                 "Mobile Apps (iOS/Android)",
                 "Intercom",
@@ -159,7 +168,7 @@ const Features = () => {
         {
             title: "FINANCIAL MANAGEMENT",
             badge: "Free",
-            icon: "💰",
+            icon: <CreditCard size={32} strokeWidth={1.5} color="#fff" />,
             items: [
                 "Efficiently manage financial charges",
                 "Maintenance module",
@@ -174,7 +183,7 @@ const Features = () => {
         {
             title: "SERVICE INTEGRATION",
             badge: "Add-on",
-            icon: "🔧",
+            icon: <Wrench size={32} strokeWidth={1.5} color="#fff" />,
             highlight: true,
             items: [
                 "RWA Society Partnerships",

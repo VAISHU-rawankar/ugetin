@@ -1,13 +1,11 @@
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import { 
-    CheckCircle, 
-    ArrowRight, 
     ShieldCheck, 
     RefreshCw, 
     Users, 
     BarChart3,
-    Check
+    ArrowRight
 } from "lucide-react";
 import "./HeroSection.css";
 
@@ -60,30 +58,12 @@ const HeroSection = () => {
                         </button>
                     </motion.div>
 
-                    <motion.div className="social-proof" variants={itemVariants}>
-                        <div className="avatar-group">
-                            {[1, 2, 3, 4, 5].map((i) => (
-                                <img 
-                                    key={i}
-                                    src={`/images/avatars.png`} 
-                                    alt="User" 
-                                    className="avatar-img"
-                                    style={{ objectPosition: `-${(i-1)*44}px center` }} 
-                                />
-                            ))}
-                            <div className="avatar-count">1K+</div>
-                        </div>
-                        <span className="trust-text">
-                            Trusted by 1,000+<br />Housing Societies
-                        </span>
-                    </motion.div>
                 </motion.div>
 
                 <div className="hero-right">
                     <div className="hero-visual-wrapper">
                         <div className="hero-blob"></div>
                         <img src="/hero1.png" alt="Society" className="hero-building" />
-                        
                     </div>
                 </div>
             </div>
@@ -135,4 +115,4 @@ const HeroSection = () => {
     );
 };
 
-export default HeroSection;
+export default HeroSection;

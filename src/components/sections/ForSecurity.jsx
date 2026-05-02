@@ -190,6 +190,8 @@ const SecurityHero = () => {
                         </motion.div>
                     </div>
 
+                        </div>
+
                         <div style={{ 
                             flex: "1",
                             display: "flex",
@@ -237,7 +239,7 @@ const SecurityHero = () => {
                                 }}
                             />
                         </div>
-                    </motion.div>
+                    </div>
 
                 </div>
             </div>
