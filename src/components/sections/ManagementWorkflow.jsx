@@ -37,7 +37,7 @@ const ManagementWorkflow = () => {
     ];
 
     return (
-        <section style={{ padding: isMobile ? "60px 20px" : "100px 24px", background: "#ffffff", textAlign: "center" }}>
+        <section style={{ padding: isMobile ? "60px 20px" : "100px 24px", background: "#000000", textAlign: "center" }}>
             <div className="container" style={{ maxWidth: "1100px", margin: "0 auto" }}>
                 {/* Heading Area */}
                 <motion.div
@@ -50,20 +50,20 @@ const ManagementWorkflow = () => {
                     <h2 style={{
                         fontFamily: "'Bebas Neue', sans-serif",
                         fontSize: "clamp(2.5rem, 5vw, 4rem)",
-                        color: "#000000",
+                        color: "#ffffff",
                         lineHeight: 1.1,
                         marginBottom: "16px",
                         letterSpacing: "1px"
                     }}>
                         Streamlined Workflow <br />
-                        <span style={{ color: "#ffffff", WebkitTextStroke: "1px #000000" }}>
+                        <span style={{ color: "#000000", WebkitTextStroke: "1px #ffffff" }}>
                             From Setup to Management
                         </span>
                     </h2>
                     <p style={{
                         fontFamily: "'DM Sans', sans-serif",
                         fontSize: "1.1rem",
-                        color: "#666666",
+                        color: "#888888",
                         maxWidth: "600px",
                         margin: "0 auto"
                     }}>
@@ -87,7 +87,7 @@ const ManagementWorkflow = () => {
                             left: "10%",
                             right: "10%",
                             height: "1px",
-                            background: "linear-gradient(90deg, #eeeeee 0%, #000000 50%, #eeeeee 100%)",
+                            background: "linear-gradient(90deg, #111111 0%, #ffffff 50%, #111111 100%)",
                             zIndex: 0
                         }} />
                     )}
@@ -115,16 +115,16 @@ const ManagementWorkflow = () => {
                                     width: isMobile ? "70px" : "80px",
                                     height: isMobile ? "70px" : "80px",
                                     borderRadius: "50%",
-                                    background: index === 1 ? "#000000" : "#ffffff",
-                                    border: "1px solid #eeeeee",
+                                    background: index === 1 ? "#ffffff" : "#000000",
+                                    border: "1px solid rgba(255,255,255,0.1)",
                                     display: "flex",
                                     alignItems: "center",
                                     justifyContent: "center",
                                     marginBottom: isMobile ? "16px" : "24px",
-                                    boxShadow: index === 1 ? "0 10px 30px rgba(0,0,0,0.15)" : "0 4px 12px rgba(0,0,0,0.05)",
+                                    boxShadow: index === 1 ? "0 10px 30px rgba(255,255,255,0.1)" : "0 4px 12px rgba(255,255,255,0.05)",
                                     position: "relative"
                                 }}>
-                                    <Icon size={isMobile ? 24 : 28} color={index === 1 ? "#ffffff" : "#000000"} strokeWidth={1.5} />
+                                    <Icon size={isMobile ? 24 : 28} color={index === 1 ? "#000000" : "#ffffff"} strokeWidth={1.5} />
                                     {/* Number Badge */}
                                     <div style={{
                                         position: "absolute",
@@ -132,15 +132,15 @@ const ManagementWorkflow = () => {
                                         right: "-5px",
                                         width: "24px",
                                         height: "24px",
-                                        background: "#000000",
-                                        color: "#ffffff",
+                                        background: "#ffffff",
+                                        color: "#000000",
                                         borderRadius: "50%",
                                         fontSize: "12px",
                                         fontWeight: 800,
                                         display: "flex",
                                         alignItems: "center",
                                         justifyContent: "center",
-                                        border: "2px solid #ffffff"
+                                        border: "2px solid #000000"
                                     }}>
                                         {step.id}
                                     </div>
@@ -151,7 +151,7 @@ const ManagementWorkflow = () => {
                                     fontFamily: "'DM Sans', sans-serif",
                                     fontSize: isMobile ? "1.15rem" : "1.25rem",
                                     fontWeight: 700,
-                                    color: "#000000",
+                                    color: "#ffffff",
                                     marginBottom: "12px"
                                 }}>
                                     {step.title}
@@ -159,7 +159,7 @@ const ManagementWorkflow = () => {
                                 <p style={{
                                     fontFamily: "'DM Sans', sans-serif",
                                     fontSize: "0.95rem",
-                                    color: "#666666",
+                                    color: "#888888",
                                     lineHeight: 1.6,
                                     maxWidth: "280px"
                                 }}>

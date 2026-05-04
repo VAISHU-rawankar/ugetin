@@ -9,7 +9,7 @@ export const residentData = {
             "UGATE empowers residents with a powerful mobile ecosystem to handle maintenance payments, visitor approvals, facility bookings, and community engagement with a single tap. Experience a smarter way to live in your society.",
         buttons: [
             { label: "Request Demo →", variant: "outline", href: "/contact" },
-            { label: "Explore Features ↓", variant: "filled", href: "#features" },
+            { label: "Explore Features ↓", variant: "filled", href: "/features" },
         ],
     },
 

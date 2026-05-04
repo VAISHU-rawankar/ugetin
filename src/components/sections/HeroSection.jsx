@@ -40,9 +40,8 @@ const HeroSection = () => {
                         Smarter Living. Simplified.
                     </motion.span>
                     <motion.h1 className="hero-title" variants={itemVariants}>
-                        One Platform.<br />
-                        Everything Your<br />
-                        Society Needs.
+                        ONE PLATFORM.<br />
+                        EVERYTHING YOUR SOCIETY NEEDS.
                     </motion.h1>
                     <motion.p className="hero-description" variants={itemVariants}>
                         From visitor management to maintenance billing, UrbanGate helps 
@@ -53,7 +52,17 @@ const HeroSection = () => {
                         <button className="btn-black" onClick={() => navigate("/contact")}>
                             Get Free Demo <ArrowRight size={18} />
                         </button>
-                        <button className="btn-outline" onClick={() => navigate("/features")}>
+                        <button 
+                            className="btn-outline" 
+                            onClick={() => {
+                                if (window.location.pathname === "/features") {
+                                    document.getElementById("features")?.scrollIntoView({ behavior: "smooth" });
+                                } else {
+                                    navigate("/features");
+                                }
+                            }}
+                            style={{ cursor: "pointer" }}
+                        >
                             Explore Features <ArrowRight size={18} />
                         </button>
                     </motion.div>

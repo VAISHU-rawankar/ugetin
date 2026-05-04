@@ -223,9 +223,9 @@ export const footerPlatformLinks = [
 
 export const footerCompanyLinks = [
   { label: "Contact", href: "/contact" },
-  { label: "About Us", href: "#" },
-  { label: "Privacy Policy", href: "#" },
-  { label: "Terms of Service", href: "#" },
+  { label: "About Us", href: "/" },
+  { label: "Privacy Policy", href: "/faq" },
+  { label: "Terms of Service", href: "/faq" },
 ];
 
 export const socialLinks = [

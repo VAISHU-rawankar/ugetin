@@ -12,12 +12,12 @@ const BlogFilter = ({ filters = [], onFilter }) => {
     return (
         <div className="blog-categories" style={{
             display: "flex",
-            gap: "4px",
+            gap: "8px",
             alignItems: "center",
-            padding: "12px 0",
-            borderTop: "1px solid #e5e7eb",
-            borderBottom: "1px solid #e5e7eb",
-            margin: "24px 0",
+            padding: "20px 0",
+            borderTop: "1px solid rgba(255,255,255,0.08)",
+            borderBottom: "1px solid rgba(255,255,255,0.08)",
+            margin: "40px 0",
             flexWrap: "wrap",
         }}>
             {filters.map((filter) => (
@@ -26,15 +26,28 @@ const BlogFilter = ({ filters = [], onFilter }) => {
                     onClick={() => handleClick(filter)}
                     className="category-btn"
                     style={{
-                        padding: "7px 18px",
-                        borderRadius: "8px",
-                        border: "none",
-                        background: active === filter ? "#111" : "transparent",
-                        color: active === filter ? "#fff" : "#555",
-                        fontSize: "0.875rem",
-                        fontWeight: 500,
+                        padding: "8px 24px",
+                        borderRadius: "100px",
+                        border: "1px solid rgba(255,255,255,0.1)",
+                        background: active === filter ? "#ffffff" : "transparent",
+                        color: active === filter ? "#000000" : "#888",
+                        fontFamily: "'DM Sans', sans-serif",
+                        fontSize: "0.85rem",
+                        fontWeight: 600,
                         cursor: "pointer",
-                        transition: "all 0.18s ease",
+                        transition: "all 0.25s cubic-bezier(0.4, 0, 0.2, 1)",
+                    }}
+                    onMouseEnter={(e) => {
+                        if (active !== filter) {
+                            e.currentTarget.style.borderColor = "rgba(255,255,255,0.4)";
+                            e.currentTarget.style.color = "#ffffff";
+                        }
+                    }}
+                    onMouseLeave={(e) => {
+                        if (active !== filter) {
+                            e.currentTarget.style.borderColor = "rgba(255,255,255,0.1)";
+                            e.currentTarget.style.color = "#888";
+                        }
                     }}
                 >
                     {filter}
@@ -42,12 +55,11 @@ const BlogFilter = ({ filters = [], onFilter }) => {
             ))}
             <button style={{
                 marginLeft: "auto",
-                padding: "7px 12px",
-                borderRadius: "8px",
-                border: "none",
+                padding: "8px 12px",
                 background: "transparent",
-                color: "#999",
-                fontSize: "1rem",
+                border: "none",
+                color: "#555",
+                fontSize: "1.2rem",
                 cursor: "pointer",
             }}>
                 •••

@@ -108,27 +108,27 @@ const Blog = ({ data = {} }) => {
 
     return (
         <div style={{
-            fontFamily: "'DM Sans', 'Helvetica Neue', sans-serif",
-            background: "#fff",
+            fontFamily: "'DM Sans', sans-serif",
+            background: "#000000",
             minHeight: "100vh",
-            marginTop: "50px",
+            paddingTop: "60px",
         }}>
             <style>{`
                 .blog-main-grid {
                     display: grid;
                     grid-template-columns: 1fr 1fr 1fr;
-                    gap: 40px;
-                    margin-bottom: 24px;
+                    gap: 60px;
+                    margin-bottom: 60px;
                 }
-                @media (max-width: 900px) {
+                @media (max-width: 1100px) {
                     .blog-main-grid {
                         grid-template-columns: 1fr;
-                        gap: 48px;
+                        gap: 60px;
                     }
                 }
             `}</style>
 
-            <div className="container" style={{ maxWidth: "1200px", margin: "0 auto", padding: "12px 24px" }}>
+            <div className="container" style={{ maxWidth: "1300px", margin: "0 auto", padding: "40px 24px" }}>
 
                 {/* Hero: Blog title + Featured post banner */}
                 <BlogHero data={hero} />

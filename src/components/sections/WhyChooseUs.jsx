@@ -234,8 +234,8 @@ const ScrollingRow = ({ items, direction = "left", speed = 40 }) => {
                             key={`${item.id}-${idx}`}
                             style={{
                                 width: "260px",
-                                background: "#ffffff",
-                                border: "1px solid #eeeeee",
+                                background: "#0a0a0a",
+                                border: "1px solid rgba(255,255,255,0.05)",
                                 borderRadius: "12px",
                                 padding: "20px",
                                 display: "flex",
@@ -247,20 +247,20 @@ const ScrollingRow = ({ items, direction = "left", speed = 40 }) => {
                             <div style={{
                                 width: "48px",
                                 height: "48px",
-                                background: "#000000",
+                                background: "#ffffff",
                                 borderRadius: "10px",
                                 display: "flex",
                                 alignItems: "center",
                                 justifyContent: "center"
                             }}>
-                                <Icon size={24} color="#ffffff" strokeWidth={1.5} />
+                                <Icon size={24} color="#000000" strokeWidth={1.5} />
                             </div>
                             <div>
                                 <h4 style={{
                                     fontFamily: "'DM Sans', sans-serif",
                                     fontSize: "1.1rem",
                                     fontWeight: 700,
-                                    color: "#000000",
+                                    color: "#ffffff",
                                     margin: "0 0 8px 0"
                                 }}>
                                     {item.title}
@@ -268,7 +268,7 @@ const ScrollingRow = ({ items, direction = "left", speed = 40 }) => {
                                 <p style={{
                                     fontFamily: "'DM Sans', sans-serif",
                                     fontSize: "0.9rem",
-                                    color: "#666666",
+                                    color: "#888888",
                                     lineHeight: 1.5,
                                     margin: 0,
                                     whiteSpace: "normal"
@@ -291,7 +291,7 @@ const WhyChooseUs = () => {
     return (
         <section
             style={{
-                background: "#fafafa",
+                background: "#000000",
                 padding: "60px 0",
                 overflow: "hidden",
             }}
@@ -306,17 +306,17 @@ const WhyChooseUs = () => {
                         fontFamily: "'Bebas Neue', sans-serif",
                         fontSize: "clamp(3rem, 5vw, 4.5rem)",
                         fontWeight: 400,
-                        color: "#000000",
+                        color: "#ffffff",
                         letterSpacing: "1px",
                         margin: 0,
                     }}
                 >
-                    WHY CHOOSE <span style={{ color: "#ffffff", WebkitTextStroke: "1px #000000" }}>UGATE</span>
+                    WHY CHOOSE <span style={{ color: "#000000", WebkitTextStroke: "1px #ffffff" }}>UGATE</span>
                 </motion.h2>
                 <p style={{
                     fontFamily: "'DM Sans', sans-serif",
                     fontSize: "1.1rem",
-                    color: "#666666",
+                    color: "#888888",
                     marginTop: "12px"
                 }}>
                     The standard for modern society management and security.

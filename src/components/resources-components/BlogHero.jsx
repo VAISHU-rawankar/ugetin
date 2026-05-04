@@ -5,26 +5,46 @@ const BlogHero = ({ data = {} }) => {
     const { title = "UGATE BLOG", subtitle = "Tech & Security Insights", featuredPost = {} } = data;
 
     return (
-        <div style={{ padding: "40px 0 0" }}>
+        <div style={{ padding: "0 0 60px" }}>
             {/* Blog Title */}
             <motion.div
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-                style={{ marginBottom: "20px" }}
+                style={{ marginBottom: "40px", borderBottom: "1px solid rgba(255,255,255,0.08)", paddingBottom: "24px" }}
             >
+                <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "16px" }}>
+                    <div style={{ width: "32px", height: "2px", background: "#ffffff" }} />
+                    <span style={{
+                        fontFamily: "'Space Mono', monospace",
+                        fontSize: "11px",
+                        letterSpacing: "3px",
+                        color: "#888",
+                        textTransform: "uppercase"
+                    }}>
+                        RESOURCES & INSIGHTS
+                    </span>
+                </div>
+                
                 <h1 style={{
-                    fontSize: "clamp(1.8rem, 3vw, 2.4rem)",
-                    fontWeight: 800,
-                    color: "#111",
-                    letterSpacing: "-0.03em",
-                    margin: "0 0 4px 0",
-                    lineHeight: 1.1,
+                    fontFamily: "'Bebas Neue', sans-serif",
+                    fontSize: "clamp(3.5rem, 6vw, 5.5rem)",
+                    fontWeight: 400,
+                    color: "#ffffff",
+                    letterSpacing: "1px",
+                    margin: "0 0 8px 0",
+                    lineHeight: 1,
+                    textTransform: "uppercase",
                 }}>
                     {title}
                 </h1>
-                <div style={{ width: "48px", height: "3px", background: "#111", borderRadius: "2px", marginBottom: "6px" }} />
-                <p style={{ fontSize: "0.95rem", color: "#555", margin: 0 }}>{subtitle}</p>
+                <p style={{ 
+                    fontFamily: "'DM Sans', sans-serif",
+                    fontSize: "1.1rem", 
+                    color: "#888", 
+                    margin: 0,
+                    maxWidth: "600px"
+                }}>{subtitle}</p>
             </motion.div>
 
             {/* Featured Post Banner */}
@@ -35,61 +55,82 @@ const BlogHero = ({ data = {} }) => {
                     transition={{ duration: 0.5, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
                     style={{
                         position: "relative",
-                        borderRadius: "16px",
+                        borderRadius: "24px",
                         overflow: "hidden",
-                        minHeight: "280px",
+                        minHeight: "400px",
                         cursor: "pointer",
+                        border: "1px solid rgba(255,255,255,0.08)",
+                        display: "flex",
+                        alignItems: "center"
                     }}
                 >
-                    {/* Background image */}
+                    {/* Background image with high contrast B&W feel */}
                     <div style={{
                         position: "absolute", inset: 0,
                         backgroundImage: `url("${featuredPost.image}")`,
                         backgroundSize: "cover",
                         backgroundPosition: "center",
-                        filter: "brightness(0.55)",
+                        filter: "grayscale(1) brightness(0.4)",
                     }} />
 
                     {/* Content overlay */}
                     <div style={{
                         position: "relative", zIndex: 1,
-                        padding: "40px 32px",
-                        maxWidth: "520px",
+                        padding: "60px 48px",
+                        maxWidth: "640px",
                     }}>
+                        <span style={{
+                            fontFamily: "'Space Mono', monospace",
+                            fontSize: "10px",
+                            letterSpacing: "3px",
+                            color: "#ffffff",
+                            textTransform: "uppercase",
+                            background: "rgba(255,255,255,0.1)",
+                            padding: "4px 12px",
+                            borderRadius: "4px",
+                            marginBottom: "20px",
+                            display: "inline-block"
+                        }}>
+                            Featured Article
+                        </span>
+
                         <h2 style={{
-                            fontSize: "clamp(1.2rem, 2.5vw, 1.7rem)",
+                            fontFamily: "'DM Sans', sans-serif",
+                            fontSize: "clamp(1.8rem, 3.5vw, 2.5rem)",
                             fontWeight: 700,
-                            color: "#fff",
+                            color: "#ffffff",
                             letterSpacing: "-0.02em",
-                            margin: "0 0 10px 0",
-                            lineHeight: 1.25,
+                            margin: "0 0 16px 0",
+                            lineHeight: 1.2,
                         }}>
                             {featuredPost.title}
                         </h2>
                         <p style={{
-                            fontSize: "0.875rem",
-                            color: "rgba(255,255,255,0.85)",
+                            fontFamily: "'DM Sans', sans-serif",
+                            fontSize: "1.05rem",
+                            color: "rgba(255,255,255,0.7)",
                             lineHeight: 1.6,
-                            margin: "0 0 20px 0",
+                            margin: "0 0 32px 0",
                         }}>
                             {featuredPost.excerpt}
                         </p>
                         <a href={featuredPost.href} style={{
-                            display: "inline-block",
-                            padding: "9px 22px",
-                            borderRadius: "8px",
-                            background: "transparent",
-                            color: "#fff",
-                            border: "1.5px solid #fff",
-                            fontSize: "0.875rem",
-                            fontWeight: 600,
+                            display: "inline-flex",
+                            alignItems: "center",
+                            gap: "8px",
+                            padding: "14px 32px",
+                            borderRadius: "4px",
+                            background: "#ffffff",
+                            color: "#000000",
+                            fontSize: "0.95rem",
+                            fontWeight: 700,
                             textDecoration: "none",
-                            transition: "all 0.2s ease",
+                            transition: "all 0.3s ease",
                         }}
-                            onMouseEnter={(e) => { e.currentTarget.style.background = "#fff"; e.currentTarget.style.color = "#111"; }}
-                            onMouseLeave={(e) => { e.currentTarget.style.background = "transparent"; e.currentTarget.style.color = "#fff"; }}
+                            onMouseEnter={(e) => { e.currentTarget.style.background = "transparent"; e.currentTarget.style.color = "#ffffff"; e.currentTarget.style.border = "1px solid #ffffff"; }}
+                            onMouseLeave={(e) => { e.currentTarget.style.background = "#ffffff"; e.currentTarget.style.color = "#000000"; e.currentTarget.style.border = "1px solid #ffffff"; }}
                         >
-                            Read More
+                            Read Full Article
                         </a>
                     </div>
                 </motion.div>

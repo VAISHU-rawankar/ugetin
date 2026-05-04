@@ -34,7 +34,7 @@ const WhyUGate = () => {
         >
             <section style={{
                 padding: isMobile ? "60px 20px" : "100px 24px",
-                background: "#f5f5f5",
+                background: "#000000",
                 textAlign: "center",
                 position: "relative",
                 overflow: "hidden"
@@ -47,7 +47,7 @@ const WhyUGate = () => {
                     transform: "translate(-50%, -50%)",
                     width: "80%",
                     height: "80%",
-                    background: "radial-gradient(circle, rgba(0,0,0,0.02) 0%, transparent 70%)",
+                    background: "radial-gradient(circle, rgba(255,255,255,0.03) 0%, transparent 70%)",
                     pointerEvents: "none",
                     zIndex: 0
                 }} />
@@ -57,17 +57,17 @@ const WhyUGate = () => {
                         <h2 style={{
                             fontFamily: "'Bebas Neue', sans-serif",
                             fontSize: isMobile ? "3rem" : "clamp(3.5rem, 8vw, 6rem)",
-                            color: "#000000",
+                            color: "#ffffff",
                             lineHeight: 0.9,
                             marginBottom: "16px",
                             letterSpacing: "2px"
                         }}>
-                            WHY <span style={{ color: "transparent", WebkitTextStroke: "1px #000000" }}>UGATE?</span>
+                            WHY <span style={{ color: "transparent", WebkitTextStroke: "1px #ffffff" }}>UGATE?</span>
                         </h2>
                         <p style={{
                             fontFamily: "'DM Sans', sans-serif",
                             fontSize: isMobile ? "1rem" : "1.1rem",
-                            color: "#666666",
+                            color: "#888888",
                             maxWidth: "540px",
                             margin: "0 auto",
                             lineHeight: 1.6
@@ -98,7 +98,7 @@ const WhyUGate = () => {
                                     transition={{ duration: 0.3, ease: "easeOut" }}
                                     style={{
                                         padding: isMobile ? "30px 24px" : "40px 32px",
-                                        background: "#000000",
+                                        background: "#0a0a0a",
                                         borderRadius: "24px",
                                         display: "flex",
                                         flexDirection: "column",
@@ -108,7 +108,7 @@ const WhyUGate = () => {
                                         transition: "all 0.3s ease",
                                         cursor: "default",
                                         textAlign: "center",
-                                        boxShadow: "0 10px 30px rgba(0,0,0,0.15)"
+                                        boxShadow: "0 10px 30px rgba(0,0,0,0.3)"
                                     }}
                                 >
                                     <div style={{ 
@@ -152,22 +152,7 @@ const WhyUGate = () => {
                     }}>
                         <Link to="/pricing" style={{
                             padding: "18px 40px",
-                            background: "#000000",
-                            color: "#ffffff",
-                            textDecoration: "none",
-                            borderRadius: "100px",
-                            fontFamily: "'DM Sans', sans-serif",
-                            fontWeight: 700,
-                            fontSize: "1rem",
-                            transition: "all 0.3s ease",
-                            border: "1px solid #000000",
-                            textAlign: "center"
-                        }}>
-                            Get Started Free →
-                        </Link>
-                        <Link to="/contact" style={{
-                            padding: "18px 40px",
-                            background: "transparent",
+                            background: "#ffffff",
                             color: "#000000",
                             textDecoration: "none",
                             borderRadius: "100px",
@@ -175,7 +160,22 @@ const WhyUGate = () => {
                             fontWeight: 700,
                             fontSize: "1rem",
                             transition: "all 0.3s ease",
-                            border: "1px solid rgba(0, 0, 0, 0.1)",
+                            border: "1px solid #ffffff",
+                            textAlign: "center"
+                        }}>
+                            Get Started Free →
+                        </Link>
+                        <Link to="/contact" style={{
+                            padding: "18px 40px",
+                            background: "transparent",
+                            color: "#ffffff",
+                            textDecoration: "none",
+                            borderRadius: "100px",
+                            fontFamily: "'DM Sans', sans-serif",
+                            fontWeight: 700,
+                            fontSize: "1rem",
+                            transition: "all 0.3s ease",
+                            border: "1px solid rgba(255, 255, 255, 0.3)",
                             textAlign: "center"
                         }}>
                             Schedule Demo 📅

@@ -133,39 +133,66 @@ const BlogNewsletter = ({ data = {} }) => {
             viewport={{ once: true }}
             transition={{ duration: 0.45 }}
             style={{
-                background: "#f7f7f7",
-                borderRadius: "16px",
-                padding: isMobile ? "24px 20px" : "32px 40px",
+                background: "#ffffff",
+                borderRadius: "24px",
+                padding: isMobile ? "40px 24px" : "60px 80px",
                 display: "flex",
                 flexDirection: isMobile ? "column" : "row",
                 alignItems: isMobile ? "stretch" : "center",
                 justifyContent: "space-between",
-                gap: isMobile ? "16px" : "24px",
-                marginTop: "16px",
-                marginBottom: "48px",
+                gap: isMobile ? "32px" : "48px",
+                marginTop: "80px",
+                marginBottom: "80px",
+                boxShadow: "0 20px 40px rgba(0,0,0,0.4)"
             }}
         >
             {/* Text */}
-            <div>
-                <p style={{ fontSize: "1rem", fontWeight: 700, color: "#111", margin: "0 0 4px 0" }}>
+            <div style={{ maxWidth: "500px" }}>
+                <p style={{ 
+                    fontFamily: "'DM Sans', sans-serif",
+                    fontSize: "1.5rem", 
+                    fontWeight: 700, 
+                    color: "#000000", 
+                    margin: "0 0 12px 0",
+                    lineHeight: 1.2
+                }}>
                     {title}
                 </p>
-                <p style={{ fontSize: "0.85rem", color: "#666", margin: 0 }}>
+                <p style={{ 
+                    fontFamily: "'DM Sans', sans-serif",
+                    fontSize: "1rem", 
+                    color: "#666", 
+                    margin: 0,
+                    lineHeight: 1.5
+                }}>
                     {subtitle}
                 </p>
             </div>
 
             {/* Input + Button */}
             {submitted ? (
-                <p style={{ fontSize: "0.9rem", fontWeight: 600, color: "#16a34a", margin: 0 }}>
-                    ✓ You're subscribed!
-                </p>
+                <div style={{
+                    background: "#000000",
+                    padding: "16px 32px",
+                    borderRadius: "100px",
+                }}>
+                    <p style={{ 
+                        fontFamily: "'DM Sans', sans-serif",
+                        fontSize: "1rem", 
+                        fontWeight: 700, 
+                        color: "#ffffff", 
+                        margin: 0 
+                    }}>
+                        ✓ YOU'RE ON THE LIST
+                    </p>
+                </div>
             ) : (
                 <div style={{
                     display: "flex",
                     gap: "0",
                     flexShrink: 0,
-                    width: isMobile ? "100%" : "auto",
+                    width: isMobile ? "100%" : "400px",
+                    position: "relative"
                 }}>
                     <input
                         type="email"
@@ -173,33 +200,41 @@ const BlogNewsletter = ({ data = {} }) => {
                         onChange={(e) => setEmail(e.target.value)}
                         placeholder={placeholder}
                         style={{
-                            padding: "11px 16px",
-                            borderRadius: "8px 0 0 8px",
-                            border: "1.5px solid #e0e0e0",
-                            borderRight: "none",
-                            fontSize: "0.875rem",
+                            padding: "18px 24px",
+                            borderRadius: "100px",
+                            border: "1px solid #e5e5e5",
+                            fontSize: "1rem",
                             outline: "none",
-                            width: isMobile ? "100%" : "240px",
-                            flex: isMobile ? 1 : "none",
-                            background: "#fff",
-                            color: "#111",
+                            width: "100%",
+                            background: "#f9f9f9",
+                            color: "#000000",
                             boxSizing: "border-box",
+                            fontFamily: "'DM Sans', sans-serif",
                         }}
                     />
                     <button
                         onClick={handleSubmit}
                         style={{
-                            padding: "11px 22px",
-                            borderRadius: "0 8px 8px 0",
+                            position: "absolute",
+                            right: "6px",
+                            top: "6px",
+                            bottom: "6px",
+                            padding: "0 32px",
+                            borderRadius: "100px",
                             border: "none",
-                            background: "#111",
-                            color: "#fff",
-                            fontSize: "0.875rem",
-                            fontWeight: 600,
+                            background: "#000000",
+                            color: "#ffffff",
+                            fontSize: "0.9rem",
+                            fontWeight: 700,
                             cursor: "pointer",
                             whiteSpace: "nowrap",
-                            flexShrink: 0,
+                            transition: "all 0.3s ease",
+                            fontFamily: "'DM Sans', sans-serif",
+                            textTransform: "uppercase",
+                            letterSpacing: "1px"
                         }}
+                        onMouseEnter={(e) => { e.currentTarget.style.opacity = "0.8"; }}
+                        onMouseLeave={(e) => { e.currentTarget.style.opacity = "1"; }}
                     >
                         {buttonLabel}
                     </button>

@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 const CostComparison = () => {
     return (
         <section style={{
-            padding: "120px 24px",
+            padding: "56px 24px",
             background: "#000000",
             position: "relative",
             overflow: "hidden"
@@ -27,7 +27,7 @@ const CostComparison = () => {
                 }
 
                 .column {
-                    padding: 64px;
+                    padding: 36px 48px;
                     position: relative;
                     transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
                 }
@@ -83,7 +83,7 @@ const CostComparison = () => {
                 .check-list {
                     list-style: none;
                     padding: 0;
-                    margin: 40px 0;
+                    margin: 24px 0;
                     display: flex;
                     flex-direction: column;
                     gap: 16px;
@@ -122,7 +122,7 @@ const CostComparison = () => {
                 }
             `}</style>
 
-            <div style={{ textAlign: "center", marginBottom: "80px" }}>
+            <div style={{ textAlign: "center", marginBottom: "40px" }}>
                 <div style={{ 
                     fontFamily: "'Space Mono', monospace", 
                     fontSize: "11px", 
